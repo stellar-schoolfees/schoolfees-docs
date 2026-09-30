@@ -1,0 +1,36 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check every link and SUMMARY entry
+        run: node scripts/check-links.mjs
+
+      - name: Test the link checker
+        run: node --test
+
+      # mdBook is deliberately not installed on the maintainer's machine (see
+      # AGENTS.md), so the book build is verified here only.
+      - name: Install mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: "latest"
+
+      - name: Build the book
+        run: mdbook build
