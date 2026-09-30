@@ -1,0 +1,15 @@
+[book]
+title = "schoolfees"
+authors = ["Tim Oyelabi"]
+language = "en"
+src = "src"
+description = "Documentation for schoolfees, a Stellar/Soroban pilot that records school fee obligations against opaque references. Testnet only."
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/stellar-schoolfees/schoolfees-docs"
+edit-url-template = "https://github.com/stellar-schoolfees/schoolfees-docs/edit/main/{path}"
+
+[output.html.search]
+enable = true
