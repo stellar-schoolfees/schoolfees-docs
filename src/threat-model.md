@@ -2,8 +2,8 @@
 
 A first, honest pass for the v0 contract. It is written to be reviewed before a
 pilot, not to reassure anyone. Where a category does not apply, it says why
-rather than being skipped. This model covers the **contract**; the app does not
-exist yet and is covered only as a named gap.
+rather than being skipped. This model covers the **contract**; the app is
+covered only as a named gap.
 
 ## Assets
 
@@ -58,8 +58,8 @@ exist yet and is covered only as a named gap.
   change, so a closed fee's totals cannot move
   (`src/error_paths.rs::error_path_fee_closed`).
 - **Not applicable:** there is no client-side state that matters. A client can
-  display anything it likes, but it cannot change what the ledger says. Once the
-  app exists, only the app's *display* becomes tamperable, not the record.
+  display anything it likes, but it cannot change what the ledger says. The
+  app's *display* is tamperable the same way; the record is not.
 
 ### Repudiation — denying an action afterwards
 
@@ -137,9 +137,10 @@ This model does **not** cover:
   analysis has been done.
 - **Key management and wallet compromise.** If a school's or payer's signing key
   is stolen, the thief can sign as them. The contract cannot help.
-- **The `schoolfees-app`.** It is not built. When it exists, it will need its own
-  review for phishing, misleading display, error handling and reference
-  generation.
+- **The `schoolfees-app`.** It is implemented but has never run against a
+  deployed contract, and it has had no independent review for phishing,
+  misleading display, error handling or reference generation. That review is
+  still owed.
 - **The token contract.** Its security is not this project's to analyse; this
   contract trusts whatever SEP-41 token the school names.
 - **Social engineering.** Given open fee creation and no registry, the most

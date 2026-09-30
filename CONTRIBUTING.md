@@ -35,9 +35,9 @@ SUMMARY entry has no page, and CI fails if the link checker fails.
 - **Describe only what the code does.** Mark anything unbuilt as "Not
   implemented yet".
 - **Point at something checkable.** Every technical claim should name a file,
-  function, test or command in `schoolfees-contracts` (or, later,
-  `schoolfees-app`). If you cannot point at it, remove it or mark it
-  `TODO(verify)`.
+  function, test or command in `schoolfees-contracts` or `schoolfees-app`. If
+  you cannot point at it, remove it or record it in
+  [todo-verify.md](src/todo-verify.md).
 - **Quote error wording, never paraphrase it.** The user-facing message column
   of `ERRORS.md` in `schoolfees-contracts` is the single source of truth.
 - **Plain language first.** Explain any Stellar or Soroban term the first time

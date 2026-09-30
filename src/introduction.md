@@ -27,7 +27,7 @@ public ledger.
 | Repository | What it is | Status |
 |---|---|---|
 | [`schoolfees-contracts`](https://github.com/stellar-schoolfees/schoolfees-contracts) | The Soroban smart contract, in Rust | Implemented, testnet only, not deployed |
-| [`schoolfees-app`](https://github.com/stellar-schoolfees/schoolfees-app) | The small web app (wallet flow) | Not built yet |
+| [`schoolfees-app`](https://github.com/stellar-schoolfees/schoolfees-app) | The small web app (wallet flow) | Implemented and unit tested; never run against a deployed contract or a real wallet |
 | [`schoolfees-docs`](https://github.com/stellar-schoolfees/schoolfees-docs) | This book | This is what you are reading |
 
 ## Background terms
@@ -64,4 +64,7 @@ public ledger.
 4. [Threat model](threat-model.md) — a STRIDE walk-through of the risks.
 5. [Pilot playbook](pilot-playbook.md) — how a pilot will be run, and when.
 6. [Pilots](pilots/README.md) — the record of real pilots (currently: none).
-7. [FAQ](faq.md) — short answers to common questions.
+7. [Proven vs assumed](proven-vs-assumed.md) — what has actually been executed, and what has not.
+8. [Pilot readiness](pilot-readiness.md) — what must be true before the first deployment.
+9. [Todo: verify](todo-verify.md) — the open items that nobody has been able to check yet.
+10. [FAQ](faq.md) — short answers to common questions.

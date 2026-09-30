@@ -57,10 +57,12 @@ These are things a reader might assume the contract checks, and it does not:
 
 ## Not yet handled
 
-- **There is no app.** `schoolfees-app` is not built. Today the only way to
-  interact with the contract is the developer checks in the
-  [quickstart](quickstart.md); there is no wallet flow, no receipt, and no
-  user-facing error message outside `ERRORS.md`.
+- **There is no deployed contract, so the app cannot be used end to end.**
+  `schoolfees-app` is implemented and its pure logic is unit tested, but it has
+  never run against a deployed contract or a real wallet: every RPC call, the
+  wallet connection, transaction submission and error parsing are unverified on
+  a real network. Until a real contract id exists it shows a configuration
+  notice. See [proven vs assumed](proven-vs-assumed.md).
 - **There is no way to list fees.** Every lookup is keyed by id or reference.
   There is no pagination and no on-chain index, so enumerating a school's fees
   means relying on an indexer that reads events — and an indexer is not part of
@@ -83,8 +85,11 @@ These are things a reader might assume the contract checks, and it does not:
   `06-property-based-invariants.md`), no coverage gate, and no load or
   adversarial testing. The test suite checks the documented paths, not arbitrary
   input sequences.
-- **No receipts, exports, reminders, translations or accessibility work.** None
-  of these are built, and none are promised by this book.
+- **No receipts, exports, reminders or translations.** Receipts and translations
+  are drafts in `schoolfees-app`; reminders need a backend and a contact channel
+  the project deliberately does not have, so they are out of scope. The app uses
+  labelled, mobile-first, semantic markup, but no screen-reader or keyboard
+  audit has been done, so accessibility is built in, not proven.
 
 ## Pilot evidence boundary
 

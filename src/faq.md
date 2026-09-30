@@ -14,8 +14,11 @@ or tutorial centre has agreed to try the flow (see the
 
 ## Where is the app?
 
-Not built. `schoolfees-app` is a later phase of the project. Today the only way
-to run the code is the developer checks in the [quickstart](quickstart.md).
+It is implemented and its pure logic is unit tested, but it has **never run
+against a deployed contract or a real wallet**. You can run it locally (see the
+[quickstart](quickstart.md)), and without a deployed contract it only shows a
+configuration notice. No pilot has used it. [Proven vs
+assumed](proven-vs-assumed.md) lists exactly what is unverified.
 
 ## Does `schoolfees` hold my money?
 

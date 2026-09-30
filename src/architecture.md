@@ -39,7 +39,7 @@ release profile that sets `overflow-checks = true`, `panic = "abort"` and
 |---|---|---|
 | Stellar testnet | The `schoolfees` contract (`src/lib.rs`), its own persistent and instance storage | Implemented; **not deployed** |
 | Stellar testnet | The SEP-41 token contract the school chose | External, owned by the network/issuer |
-| The user's browser | The web app (`schoolfees-app`): wallet flow, error mapping | **Not implemented yet** |
+| The user's browser | The web app (`schoolfees-app`): wallet flow, error mapping | Implemented; never run against a deployed contract or a real wallet |
 | A keeper, indexer or backend service | — | **Does not exist**, and is out of scope |
 
 There is no server, no database and no off-chain component in v0. Anyone who
@@ -148,11 +148,24 @@ delegating calls (`src/lib.rs::create_fee` calls `fee::create_fee`, and so on).
 Logic, storage and checks live in `src/fee.rs`; types and events in
 `src/types.rs`; keys, TTL constants and TTL helpers in `src/storage.rs`.
 
-### `schoolfees-app` — **Not implemented yet**
+### `schoolfees-app` — implemented, not yet exercised
 
-When it exists it will own the wallet flow, turn a school's internal identifier
-into an opaque reference before it reaches the chain, and map error codes from
-`ERRORS.md` to user-facing messages. It is out of scope for v0.
+**Owns:** the wallet flow (`src/lib/wallet.ts`, Stellar Wallets Kit), the
+contract calls (`src/lib/contract.ts`: build, simulate, assemble, submit), the
+JS <-> `xdr.ScVal` conversions (`src/lib/scval.ts`), opaque-reference validation
+(`src/lib/reference.ts`, 64 hexadecimal characters), and the mapping from error
+codes to the wording in `ERRORS.md` (`src/lib/contractErrors.ts`). The contract
+id comes only from `.env`, through `src/config.ts`, and the app refuses any
+network that is not testnet.
+
+**Status: never exercised.** No contract is deployed, no real wallet has
+connected, and no transaction has been submitted from it. Every RPC call, the
+wallet prompts, the transaction submit/poll path and the parsing of host error
+strings are **unproven against a real network**. The app also reads the
+contract's `status()` return value defensively, because the encoding of the
+unit-variant enum was not verified against a deployed contract; an unrecognised
+value shows as `Unknown` rather than a guess. The [proven vs
+assumed](proven-vs-assumed.md) page has the full list.
 
 ### `schoolfees-docs` — this book
 

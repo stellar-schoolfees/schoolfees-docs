@@ -1,8 +1,9 @@
 # Quickstart
 
-There is no deployed contract and no app yet, so there is nothing to click. This
-page shows the two things that *do* work today: running the contract's checks
-yourself, and seeing the intended fee flow described in plain words.
+There is no deployed contract, so there is nothing to try on-chain yet. This
+page shows what *does* work today: running the contract's checks, running the
+app's checks (and seeing why the app cannot send anything yet), and reading the
+intended fee flow in plain words.
 
 ## For developers: run the real checks
 
@@ -39,10 +40,36 @@ node scripts/check-links.mjs      # every page link and SUMMARY entry resolves
 node --test                       # tests for the link checker
 ```
 
+## For developers: run the app's checks
+
+The web app in
+[`schoolfees-app`](https://github.com/stellar-schoolfees/schoolfees-app) is
+implemented, and its pure logic is unit tested. You can run those checks
+today:
+
+```bash
+git clone https://github.com/stellar-schoolfees/schoolfees-app.git
+cd schoolfees-app
+npm install
+
+npm run lint        # oxlint
+npm run typecheck   # TypeScript, strict
+npm test            # unit tests for the pure logic
+npm run build       # production build
+```
+
+You can also start it with `npm run dev`, but **it cannot do anything end to
+end yet**: there is no deployed contract, so the app has no real contract id to
+use. Without one it shows its configuration notice and refuses to build any
+transaction. Nothing in the app has ever run against a deployed contract or a
+real wallet — the [proven vs assumed](proven-vs-assumed.md) page lists exactly
+what is and is not verified.
+
 ## What the fee flow looks like
 
-This is the flow the contract implements. It is **not** wired to a user
-interface yet — `schoolfees-app` is a later phase.
+This is the flow the contract implements, and the calls the app builds for it.
+The app has never run any of it against a deployed contract, so the flow is
+described here, not demonstrated.
 
 1. **The school records a fee.** It signs a transaction that stores: the school's
    address, the token the fee is in, an **opaque 32-byte reference** (never a
@@ -69,6 +96,8 @@ placeholder such as `ref_0001`; in the tests it is a synthetic 32-byte value
 ## What you cannot do yet
 
 - There is no deployed contract address, so there is nothing to call on testnet.
-- There is no web app, wallet flow, receipt export, or reminder.
+- The app implements the wallet flow, but with no contract deployed it cannot
+  complete a single flow end to end. It also has no receipt export and no
+  reminder.
 - Deployment is gated: it waits until a real school or tutorial centre has
   agreed to try the flow. See the [pilot playbook](pilot-playbook.md).

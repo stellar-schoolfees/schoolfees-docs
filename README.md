@@ -8,7 +8,10 @@ happened yet.**
 
 Part of the schoolfees project, which is three repositories:
 [`schoolfees-contracts`](https://github.com/stellar-schoolfees/schoolfees-contracts)
-(the Rust contract), `schoolfees-app` (the web app, not built yet) and this one.
+(the Rust contract),
+[`schoolfees-app`](https://github.com/stellar-schoolfees/schoolfees-app)
+(the web app, implemented but never run against a deployed contract) and this
+one.
 
 ## The book
 
@@ -21,7 +24,17 @@ Part of the schoolfees project, which is three repositories:
 | [Threat model](src/threat-model.md) | A STRIDE walk-through, with honest gaps |
 | [Pilot playbook](src/pilot-playbook.md) | How a pilot will be run, and the deployment gate |
 | [Pilots](src/pilots/README.md) | The record of real pilots (currently: none) |
+| [Proven vs assumed](src/proven-vs-assumed.md) | Every claim with the test or command behind it — or the word "assumed" |
+| [Pilot readiness](src/pilot-readiness.md) | The honest checklist for the first testnet deployment |
+| [Todo: verify](src/todo-verify.md) | Everything still unverified, and what would verify it |
 | [FAQ](src/faq.md) | Short answers to common questions |
+
+## Reusing this repository
+
+Starting another Stellar project from this one? [TEMPLATE.md](TEMPLATE.md) lists
+exactly what to copy, what to change per project, and what not to copy. It is a
+note for a human or an agent starting fresh — it is not applied to any other
+repository from here.
 
 ## Working on the book
 
@@ -53,6 +66,9 @@ mdbook serve --open
 │   ├── limitations.md
 │   ├── threat-model.md
 │   ├── pilot-playbook.md
+│   ├── proven-vs-assumed.md  # every claim with its evidence, or "assumed"
+│   ├── pilot-readiness.md    # the checklist for the first deployment
+│   ├── todo-verify.md        # everything still unverified, from all three repos
 │   ├── faq.md
 │   └── pilots/               # one real pilot per file; a note until then
 ├── scripts/
@@ -60,7 +76,8 @@ mdbook serve --open
 │   └── check-links.test.mjs  # its tests
 ├── docs/issue-drafts/        # drafts for contributors (never created on GitHub for you)
 ├── AGENTS.md                 # rules for AI agents working in this repo
-└── ROADMAP.md                # what is next, and what is deliberately not built
+├── ROADMAP.md                # what is next, and what is deliberately not built
+└── TEMPLATE.md               # what to copy into a new project, and what to change
 ```
 
 ## Rules this book follows
@@ -69,7 +86,7 @@ The full set is in [AGENTS.md](AGENTS.md). The short version:
 
 - Describe only what the code does. Anything not built is marked as such.
 - Every technical claim points at a real file, function, test or command in
-  `schoolfees-contracts`.
+  `schoolfees-contracts` or `schoolfees-app`.
 - Never invent addresses, transaction hashes, testers, schools or outcomes. No
   pilot is recorded until it really happens.
 - Never put personal data in examples — only obvious placeholders such as
