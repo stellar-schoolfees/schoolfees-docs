@@ -9,5 +9,6 @@ becomes an issue.
 |---|---|---|
 | [01 — Publish the book to GitHub Pages](01-publish-book-to-github-pages.md) | ci | easy |
 | [02 — Add app-facing and pilot documentation](02-app-and-pilot-documentation.md) | docs | medium |
+| [03 — Add a docs freshness check](03-docs-freshness-check.md) | docs | easy |
 
 Anything listed here is also carried in [ROADMAP.md](https://github.com/stellar-schoolfees/schoolfees-docs/blob/main/ROADMAP.md).
