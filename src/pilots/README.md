@@ -22,5 +22,8 @@ Two things must be true before the first file appears here:
    transactions.
 
 The process that leads up to a pilot is in the
-[pilot playbook](../pilot-playbook.md). What a pilot can and cannot prove is in
+[pilot playbook](../pilot-playbook.md), and the outreach message the maintainer
+can adapt to recruit a school is in [pilot outreach](../pilot-outreach.md) —
+a template only, which becomes a record of nothing until an agreement exists.
+What a pilot can and cannot prove is in
 [known limitations](../limitations.md).

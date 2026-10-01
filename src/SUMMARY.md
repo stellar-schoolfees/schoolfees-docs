@@ -8,6 +8,7 @@
 - [Known limitations](limitations.md)
 - [Threat model](threat-model.md)
 - [Pilot playbook](pilot-playbook.md)
+- [Pilot outreach](pilot-outreach.md)
 - [Pilots](pilots/README.md)
 - [Proven vs assumed](proven-vs-assumed.md)
 - [Pilot readiness](pilot-readiness.md)
