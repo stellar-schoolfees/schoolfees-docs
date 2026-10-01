@@ -85,7 +85,7 @@ that discrepancy is recorded below rather than smoothed over.
 | Any other persistence by the app | **no** | no IndexedDB, no cache API, no service worker |
 | Analytics, tag managers, pixels | **no** | nothing in `package.json` and nothing in the built bundle |
 | Third-party **scripts** | **no** | `src/index.html` loads one module, our own |
-| **Third-party requests** | **yes, two places** | (a) the Stellar RPC endpoint from `.env`; (b) when the wallet picker is opened, the kit fetches wallet icons from `https://stellar.creit.tech/wallet-icons/…`, and two entries reference `https://scopuly.com` and `https://uni.onekey-asset.com`. So a page load makes no third-party request, but **opening the picker does** |
+| **Third-party requests** | **one place** | (a) the Stellar RPC endpoint from `.env`. The wallet picker **used to** also fetch wallet icons from `https://stellar.creit.tech/wallet-icons/…` (and `https://scopuly.com`, `https://uni.onekey-asset.com` for two entries) when it opened (see SEC-02); that is fixed: the picker now shows Stellar wallets only and serves **local** icon files, so **a page load and opening the picker make no third-party request other than the RPC call** |
 | Web fonts or other font services | **no** | system font stack; no font is downloaded |
 | Images or media | **no** | the app ships no images of its own |
 | Server-side anything | **no** | no backend, so the project never receives, stores or processes data on a server |
@@ -96,12 +96,13 @@ holds no personal data at rest anywhere** — no database, no account, no server
 no log. The data that exists lives (a) on the public chain, as above, and (b) on
 the user's own device, in the wallet kit's `localStorage`.
 
-`TODO(legal review)` — whether the wallet kit's five `localStorage` keys require
-a storage/cookie notice, and whether the remote icon requests make the wallet-icon
-host a "recipient" that must be disclosed, are questions for someone qualified.
-The honest mitigation available in code is to configure the kit with a narrower
-local-icon module set, which would remove the icon requests entirely; that is
-tracked as a decision in the gap map and as app
+`TODO(legal review)` — whether the wallet kit's five `localStorage` keys require a
+storage/cookie notice are questions for someone qualified. The remote wallet-icon
+requests that were here before 2026-10-01 have been **removed in code**: the picker
+now shows Stellar wallets only and serves local icons from `public/wallet-icons/`,
+so the icon hosts are no longer contacted and the IP-leak described by SEC-02 no
+longer happens. That leaves the `localStorage` question as the open disclosure one;
+it is tracked as a decision in the gap map and as app
 [draft 15](https://github.com/stellar-schoolfees/schoolfees-app/blob/main/docs/issue-drafts/15-correct-the-outbound-request-claim.md).
 
 > **Research note (2026-10-01), not verified by a qualified person.** The
@@ -115,11 +116,14 @@ tracked as a decision in the gap map and as app
 > [Manfield Solicitors](https://manifieldsolicitors.com/nigeria-data-protection-act-general-application-and-implementation-directive-gaid-2025-what-every-business-needs-to-know-about-nigerias-data-protection-directive/).
 
 > **Maintainer inference (2026-10-01), not legal advice.** Opening the wallet
-> picker contacts outside icon hosts (`https://stellar.creit.tech/wallet-icons/…`,
-> plus `https://scopuly.com` and `https://uni.onekey-asset.com`), which reveals
-> the user's IP address — an online identifier under the NDPA definition. This
-> supports moving to local icons (app step 4), which would remove the icon
-> requests entirely.
+> picker **used to** contact outside icon hosts
+> (`https://stellar.creit.tech/wallet-icons/…`, plus `https://scopuly.com`
+> and `https://uni.onekey-asset.com`), which would reveal the user's IP address —
+> an online identifier under the NDPA definition. That inference supported moving
+> to local icons, which is now done (app step 4): the picker serves local files
+> and so no longer contacts those hosts. The remaining inference is that the
+> Stellar RPC endpoint from `.env` still learns the payer's IP; that is the one
+> outside request the app makes, on purpose.
 
 ## 3. Where student identity is expected to live
 
