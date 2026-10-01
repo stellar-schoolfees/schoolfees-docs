@@ -23,6 +23,22 @@ What is next for the documentation, in order. Anything not listed as done is
 - [x] `TEMPLATE.md` at the repository root — what to copy into a new project, and what to change.
 - [x] Cross-repo audit: LICENSE, privacy and trailer rules, version facts and error wording checked against both code repos; stale "app not built yet" claims fixed.
 
+## Done (engineering standards — 2026-10-01)
+
+The book and the two code repositories were measured against the Build Arsenal
+(crypto profile, plus education-platform for student-data privacy) and the
+Flowtick engineering playbook. The gap map is
+[`docs/arsenal-gap-map.md`](docs/arsenal-gap-map.md), which is deliberately outside
+`src/` and not in `SUMMARY.md`.
+
+- [x] `src/prd.md` — a one-page product requirements page, written from what the code does, with no invented numbers or users. Added to `SUMMARY.md`.
+- [x] `src/legal-compliance.md` — a privacy and legal checklist marked *not legal advice*, including an audit of what the app really stores. Added to `SUMMARY.md`.
+- [x] `docs/arsenal-gap-map.md` — every Build Arsenal and Flowtick item with its status per repo, an explicit "not applicable, with the reason" list, and the open decisions.
+- [x] `docs/audits/2026-10-01-*.md` — five report-only audits: Git readiness, code review, security review, accessibility review, design review.
+- [x] `TEMPLATE.md` §5 — "From the Build Arsenal": which files to copy, what to adapt per profile, and which Flowtick items to drop.
+- [x] `AGENTS.md` — Source of truth list, Flowtick collaboration rules, and the conventional-commit/staging rule. `CONTRIBUTING.md` gained the Git discipline for outside contributors.
+- [x] Draft 04 below, from the Git-readiness audit.
+
 ## Next
 
 - [x] Push the v0 documentation and get CI green on GitHub.
@@ -37,9 +53,20 @@ These wait for facts that do not exist yet:
 - [ ] Update `limitations.md` and `threat-model.md` with anything the pilot revealed. No draft, for the same reason.
 - [ ] Publish the participant-facing flow (how a parent pays, how a school records a fee, and how a wallet is set up) — the app now exists, so every step can be written against it, but claims about real usage still wait for a pilot — see [draft 02](docs/issue-drafts/02-app-and-pilot-documentation.md).
 
+## Blocked on a legal review
+
+These need a qualified person, not a contributor, so they deliberately have no
+issue draft. They are listed in full under "Decisions needed from Tim" in
+[`docs/arsenal-gap-map.md`](docs/arsenal-gap-map.md) §9.
+
+- [ ] Review [`src/legal-compliance.md`](src/legal-compliance.md): is a privacy notice required at all, who is the controller, what is the lawful basis, and is a hash of a school-internal student id personal data where the school holds the mapping? (`TODO(legal review)`)
+- [ ] Decide whether a pilot school needs a written data arrangement before the first deployment, and who may be named in the pilot record. (`TODO(legal review)`)
+- [ ] Decide whether the wallet kit's own `localStorage` keys and its remote wallet-icon requests need to be disclosed, and whether a privacy contact must be published. Nothing is invented in the meantime. (`TODO(legal review)`)
+
 ## Later
 
 - [ ] A docs freshness check: a command that verifies the file, function and test names cited in this book still exist in the two code repos (no coverage number is set yet on purpose) — see [draft 03](docs/issue-drafts/03-docs-freshness-check.md).
+- [ ] Close the `.gitignore` gaps found by the Git-readiness audit — see [draft 04](docs/issue-drafts/04-docs-gitignore-hygiene.md).
 
 ## Explicitly out of scope
 
