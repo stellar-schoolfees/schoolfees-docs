@@ -4,6 +4,11 @@
 # Node
 /node_modules/
 
+# Testnet environment files, Stellar CLI state, and secret keys
+.env
+.stellar/
+*.key
+
 # Editors and operating systems
 .DS_Store
 Thumbs.db
