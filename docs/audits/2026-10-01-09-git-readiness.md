@@ -96,7 +96,11 @@ Also verified:
   task's work, and so the eventual commit is deliberate. It was **not** staged,
   reverted or inspected in detail by this audit — it predates it and belongs to
   the  maintainer.
-- **Status:** Not fixed — informational; the pre-existing `package-lock.json` modification remains unstaged and untouched (belongs to the maintainer).
+- **Status:** Fixed in `76bf332` — the maintainer-approved lockfile cleanup was
+  committed by name as its own `chore:` commit (70 deletions of extraneous nested
+  `typescript` entries); the full app check suite was re-run green afterwards
+  (lint 0/0, typecheck clean, 85/85 tests, build OK) and `Web` CI run #7 passed
+  on the push to `origin/main`.
 - **Suggested fix:** decide whether the lockfile change is wanted (if it came from
   a `npm install` with a different npm version, `npm ci` will surface the
   difference), then stage it by name as its own commit.
