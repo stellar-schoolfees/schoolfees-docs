@@ -62,6 +62,7 @@ advisories · data handling and the student-data rule.
 - **Tracked as:** `schoolfees-app/docs/issue-drafts/17-wallet-kit-dependency-advisories.md`
   (and `02-code-split-wallet-kit.md` for the bundle half). The decision is
   recorded in `docs/arsenal-gap-map.md` §9.4.
+- **Status:** Partially addressed in `29c6d13` — the wallet picker is narrowed to Stellar-only wallets and local icon PNGs replace the remote icon requests, but the transitive advisories in `@creit.tech/stellar-wallets-kit`'s dependency tree remain; the accept-vs-narrow decision is deferred to the maintainer in `docs/arsenal-gap-map.md` §9.4.
 
 ### SEC-02 — Opening the wallet picker contacts third-party hosts, and the README said it did not
 
@@ -97,6 +98,7 @@ advisories · data handling and the student-data rule.
   narrower, local-icon module set. That is a privacy decision, not an agent's.
 - **Tracked as:** `schoolfees-app/docs/issue-drafts/15-correct-the-outbound-request-claim.md`;
   decision recorded in `docs/arsenal-gap-map.md` §9.5.
+- **Status:** Fixed in `29c6d13` — remote wallet icons replaced with local PNGs in `public/wallet-icons/`, and the README and `docs/SECURITY.md` §8 wording corrected (companion commit `a96e25d`) to accurately describe icon requests at picker-open time.
 
 ### SEC-03 — No CSP or security headers, and no host configuration to put them in
 
@@ -110,8 +112,9 @@ advisories · data handling and the student-data rule.
 - **Why it is recorded:** so the policy is not invented at deploy time, and so the
   `img-src` decision in SEC-02 is visibly connected to it.
 - **Suggested fix:** set the documented headers when the host is chosen (a
-  maintainer step in `DEPLOYMENT_CHECKLIST.md` §5). No draft: it is a deployment
+  maintainer step in `DEPLOYMENT_CHECKLIST.md` §5).  No draft: it is a deployment
   step, not contributor work.
+- **Status:** Not fixed — no host has been chosen; setting CSP and security headers is a deployment step recorded in `docs/DEPLOYMENT_CHECKLIST.md` §5.
 
 ### SEC-04 — Bounded RPC retries and timeouts are specified but not implemented
 
@@ -131,7 +134,8 @@ advisories · data handling and the student-data rule.
   exponential backoff, applied to `getAccount`, `simulateTransaction` and poll
   only; never auto-retry `sendTransaction`; keep reporting an unknown outcome with
   the transaction hash.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/11-bound-rpc-retries-and-timeouts.md`.
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/11-bound-rpc-retries-and-timeouts.md`.
+- **Status:** Fixed in `d9c6b6c` — `retryRpc` helper with timeout + bounded exponential backoff added to `src/lib/contract.ts`, applied to `getAccount`, `simulateTransaction` and poll only; `sendTransaction` is never auto-retried.
 
 ### SEC-05 — Duplicate submission is prevented by the disabled button only
 
@@ -144,7 +148,8 @@ advisories · data handling and the student-data rule.
   on-chain either: a duplicate `pay` is a second real payment.
 - **Suggested fix:** an in-flight guard inside `useAction`, with a unit test that
   asserts an overlapping second `run` does not execute the task.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/13-guard-against-duplicate-submission.md`.
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/13-guard-against-duplicate-submission.md`.
+- **Status:** Fixed in `d9c6b6c` — `useAction.run` now guards with a `busyRef` and a `generation` counter so a second call while one is in flight is dropped (same fix as CR-02).
 
 ### SEC-06 — The contract's `paid_total ≥ refunded_total` invariant is guaranteed by ordering, not by a check
 
@@ -164,6 +169,7 @@ advisories · data handling and the student-data rule.
   explicit; the property test that would catch a regression is already drafted.
 - **Already tracked by:** `schoolfees-contracts/docs/issue-drafts/06-property-based-invariants.md`
   (no new draft).
+- **Status:** Not fixed — informational; the invariant already holds by construction (checked arithmetic + `overflow-checks = true`), but no property-based test proves it under arbitrary call sequences.
 
 ## 4. What was checked and found clean
 

@@ -73,7 +73,8 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **Suggested fix:** on a page change, move focus to the new page's heading or
   `<main>` (with `tabIndex={-1}`), and announce the change politely. Keep the
   target free of a visible ring when the change came from a pointer click.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/14-focus-management-on-page-change.md`.
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/14-focus-management-on-page-change.md`.
+- **Status:** Fixed in `1911743` — `App.tsx` now moves focus to `<main>` (via `mainRef` + `tabIndex={-1}` on page change) and announces the change through an sr-only live region.
 
 ### A11Y-02 — A status badge's meaning is only in a `title` attribute
 
@@ -91,6 +92,7 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **Tracked as:** part of `schoolfees-app/docs/issue-drafts/07-component-and-accessibility-tests.md`
   (which adds the automated check that would catch this class of issue) — recorded
   in the app's `docs/ACCESSIBILITY.md` §3 now that it is verified.
+- **Status:** Fixed in `1911743` — `StatusBadge` now renders an sr-only `<span>` with the full `describeStatus(status)` text alongside the bare status word.
 
 ### A11Y-03 — Navigation pills are 40px tall, below the project's own 44px target
 
@@ -107,9 +109,10 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **Suggested fix:** either raise `nav button` to `min-height: 44px`, or amend the
   documents to say the target is 40px for chrome and 44px for primary actions, and
   say why.
-- **Tracked as:** the app's `docs/ACCESSIBILITY.md` §6 and
+- **Tracked as:** the app's  `docs/ACCESSIBILITY.md` §6 and
   `docs/DESIGN_GUIDELINES.md` §7 now record it; it is small enough to ride with
   A11Y-01's change if the maintainer prefers.
+- **Status:** Fixed in `1911743` — `nav button` min-height raised from 40px to 44px to match the project's stated baseline.
 
 ### A11Y-04 — Placeholder text is about 2.58:1, below the 4.5:1 text minimum
 
@@ -123,17 +126,19 @@ Recorded so that the findings below are visibly a short list, not a summary:
   to a low-vision user. It is still a real deviation from the target.
 - **Suggested fix:** use `--muted` (`#475467`, 7.69:1 on white) for placeholder
   text, or drop placeholders that only restate the label.
-- **Tracked as:** recorded in the app's `docs/ACCESSIBILITY.md` §4.
+- **Tracked as:** recorded in the app's  `docs/ACCESSIBILITY.md` §4.
+- **Status:** Fixed in `1911743` — placeholder color changed from `var(--line-strong)` to `var(--muted)` (7.69:1 on white), clearing the 4.5:1 minimum.
 
 ### A11Y-05 — Full hashes and addresses are available only through `title`
 
 - **Severity: low**
 - **Files:** `schoolfees-app/src/components/TransactionResult.tsx:24`,
-  `schoolfees-app/src/components/FeeSummary.tsx:52-57,64-68`,
-  `schoolfees-app/src/components/WalletBar.tsx:20`
+  `schoolfees-app/src/components/FeeSummary.tsx:52-57,64-68`,  `schoolfees-app/src/components/WalletBar.tsx:20`
+
 - **What happens:** a transaction hash, a school address, a token address and the
   connected wallet address are all shortened for display (`shorten(hash, 10)` etc.)
   with the full value in a `title` attribute.
+- **Status:** Not fixed — full hashes and addresses are still available only through `title` attributes.
 - **Why it matters:** `title` is not reliably announced and is unreachable on a
   touch device, so a screen-reader user reads a truncated value they cannot use.
   The impact is reduced because the token address has an explorer link and the
@@ -160,6 +165,7 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **Tracked as:** covered by the acceptance criteria of
   `schoolfees-app/docs/issue-drafts/14-focus-management-on-page-change.md`
   (announcement of dynamic changes), which is the natural place for it.
+- **Status:** Not fixed — transaction results are still rendered as static content without a live region or focus move.
 
 ## 4. Static checks that also passed
 

@@ -68,6 +68,7 @@ pages, not from the stylesheet alone:
   deviations). Small enough to ride with the focus work in
   `issue-drafts/14-focus-management-on-page-change.md`, which touches the same
   shell; **no separate draft**, to avoid a filler issue for a deletion.
+- **Status:** Not fixed — three `Connect wallet` buttons are still present on the Home page (header, page, and prompt card).
 
 ### DR-02 — A view is not a URL, so nothing can be shared, linked or reloaded into
 
@@ -84,7 +85,8 @@ pages, not from the stylesheet alone:
 - **Suggested fix:** real paths with `popstate` handling, per-view titles, a
   branded unknown-path view, and the documented host rewrite. `docs/PRODUCTION_QUALITY.md`
   §1–§2 and `docs/DEPLOYMENT_CHECKLIST.md` §5 already say what will become required.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/12-url-routing-and-deep-links.md`.
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/12-url-routing-and-deep-links.md`.
+- **Status:** Not fixed — no URL routing; views remain React state.
 
 ### DR-03 — The initial bundle is about 1 MB, on a mobile-first app
 
@@ -102,6 +104,7 @@ pages, not from the stylesheet alone:
   it, and narrow the module set to Stellar wallets while doing so.
 - **Tracked as:** `schoolfees-app/docs/issue-drafts/02-code-split-wallet-kit.md`
   (and SEC-01's draft 17 for the dependency half).
+- **Status:** Partially addressed in `29c6d13` — the wallet kit is narrowed to Stellar wallets, removing the multi-chain tree from the picker, but the initial bundle is still ~1 MB; code-splitting remains open in draft 02.
 
 ### DR-04 — No favicon, so a tab and a bookmark show a blank icon
 
@@ -115,7 +118,8 @@ pages, not from the stylesheet alone:
   other tabs; an unbranded, unidentifiable tab is a small but real polish miss, and
   the fix needs no domain.
 - **Suggested fix:** add a local SVG favicon linked from `index.html`.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/16-favicon-and-social-metadata.md`.
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/16-favicon-and-social-metadata.md`.
+- **Status:** Fixed in `1034b5b` — `public/favicon.svg` added and linked from `index.html`.
 
 ### DR-05 — A write leaves the summary visibly unchanged
 
@@ -129,8 +133,9 @@ pages, not from the stylesheet alone:
   stops being true at exactly the moment the user most needs it to update.
 - **Suggested fix:** re-read the fee after a successful write, or mark the summary as
   pre-action in plain words.
-- **Tracked as:** `schoolfees-app/docs/issue-drafts/10-refresh-fee-data-after-a-write.md`
+- **Tracked as:**  `schoolfees-app/docs/issue-drafts/10-refresh-fee-data-after-a-write.md`
   (same finding as CR-01, not duplicated as a second draft).
+- **Status:** Fixed in `cf9fbe0` — `PayPage` and `SchoolActionsPage` now re-read the fee after a successful write so the summary updates to post-transaction values (same fix as CR-01).
 
 ## 4. Observations that are not defects
 

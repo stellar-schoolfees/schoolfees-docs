@@ -80,8 +80,9 @@ Also verified:
   repositories with three different answers is how a rule erodes.
 - **Suggested fix:** add the four patterns with a short comment, copying the
   comment style from `schoolfees-app/.gitignore`.
-- **Tracked as:** `schoolfees-docs/docs/issue-drafts/04-docs-gitignore-hygiene.md`.
+- **Tracked as:**  `schoolfees-docs/docs/issue-drafts/04-docs-gitignore-hygiene.md`.
   Not fixed here: this audit is report-only.
+- **Status:** Fixed in `53c158d` — `.env`, `.stellar/`, `*.key` added to `schoolfees-docs/.gitignore` with a comment matching the app's style.
 
 ### GR-02 — a pre-existing unstaged modification in the app repo
 
@@ -94,7 +95,8 @@ Also verified:
 - **Why it is recorded:** so that nobody later mistakes it for part of this
   task's work, and so the eventual commit is deliberate. It was **not** staged,
   reverted or inspected in detail by this audit — it predates it and belongs to
-  the maintainer.
+  the  maintainer.
+- **Status:** Not fixed — informational; the pre-existing `package-lock.json` modification remains unstaged and untouched (belongs to the maintainer).
 - **Suggested fix:** decide whether the lockfile change is wanted (if it came from
   a `npm install` with a different npm version, `npm ci` will surface the
   difference), then stage it by name as its own commit.

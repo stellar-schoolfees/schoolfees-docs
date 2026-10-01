@@ -58,6 +58,12 @@ each one.
 | A transaction result is read back, including a fee id and a `status()` value | **Assumed** | The `status()` encoding of the unit-variant enum was never verified against a deployed contract; the app decodes defensively and shows `Unknown` for anything unrecognised |
 | A host error string (`Error(Contract, #N)`) is parsed correctly | **Assumed** | The regex in `src/lib/contractErrors.ts` matches the documented shape only; never seen on a real network |
 | The app is accessible | **Assumed** | Labelled, mobile-first, semantic markup is built in, but no screen-reader or keyboard audit has been done — draft `07-component-and-accessibility-tests.md` |
+| The wallet picker offers only Stellar-compatible wallets | **Tested locally only** | `STELLAR_WALLET_IDS` in `src/lib/wallet.ts` narrows the kit module set to Stellar wallets (`29c6d13`); non-Stellar modules confirmed absent from the build output |
+| The wallet picker makes no third-party network requests at connect time | **Tested locally only** | Local PNG icons in `public/wallet-icons/` replace the remote URLs from audit 06 SEC-02 (`29c6d13`); README wording corrected (`a96e25d`) |
+| The transitive advisory count from audit 06 SEC-01 is unchanged | **Assumed** | `utils.js` still bundles the multi-chain tree eagerly, so the 19 advisories remain even though the picker is narrowed — the count is assumed, not re-proven by `npm audit` |
+| RPC calls are bounded with timeouts and retries, and `sendTransaction` is never auto-retried | **Tested locally only** | `retryRpc` helper with timeout + bounded exponential backoff in `src/lib/contract.ts` (`d9c6b6c`); applied to `getAccount`, `simulateTransaction` and poll only |
+| Duplicate submission is prevented by an in-flight guard in `useAction`, not only the disabled button | **Tested in CI** | `busyRef` + `generation` counter in `useAction.run` (`d9c6b6c`); unit test asserts overlapping `run` calls execute the task once |
+| A write's result is re-read so the fee summary is current | **Tested locally only** | `PayPage` and `SchoolActionsPage` re-read the fee after a successful payment, refund or close (`cf9fbe0`) |
 
 ## What would change this table
 
