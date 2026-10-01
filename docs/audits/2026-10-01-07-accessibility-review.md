@@ -138,7 +138,10 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **What happens:** a transaction hash, a school address, a token address and the
   connected wallet address are all shortened for display (`shorten(hash, 10)` etc.)
   with the full value in a `title` attribute.
-- **Status:** Not fixed — full hashes and addresses are still available only through `title` attributes.
+- **Status:** Fixed in `af5206c` — every shortened hash, address and reference
+  (`TransactionResult`, `FeeSummary` school/token/reference, `WalletBar`) now
+  carries the full value in visually-hidden `sr-only` text alongside the
+  `title` tooltip, matching the pattern used for `StatusBadge`.
 - **Why it matters:** `title` is not reliably announced and is unreachable on a
   touch device, so a screen-reader user reads a truncated value they cannot use.
   The impact is reduced because the token address has an explorer link and the
@@ -165,7 +168,10 @@ Recorded so that the findings below are visibly a short list, not a summary:
 - **Tracked as:** covered by the acceptance criteria of
   `schoolfees-app/docs/issue-drafts/14-focus-management-on-page-change.md`
   (announcement of dynamic changes), which is the natural place for it.
-- **Status:** Not fixed — transaction results are still rendered as static content without a live region or focus move.
+- **Status:** Fixed in `af5206c` — the transaction-result notice and the
+  create-a-fee fee-id notices now render inside `role="status"` containers, so
+  a polite live region announces them. Focus deliberately stays on the submit
+  button, which the suggested fix allowed as the alternative to a focus move.
 
 ## 4. Static checks that also passed
 
