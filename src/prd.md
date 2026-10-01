@@ -78,8 +78,9 @@ Nothing below is deployed.
     is built; a transaction hash and explorer link after every action.
 14. Mobile-first, labelled, keyboard-reachable markup; no analytics, no trackers,
     no backend.
-15. 85 unit tests over the pure logic, and CI running lint, type-check, tests and
-    the production build.
+15. 154 tests — 85 over the pure logic and 69 render tests with an automated
+    accessibility check — and CI running lint, type-check, tests and the
+    production build.
 
 **The documentation** (this book): architecture, limitations, threat model,
 pilot playbook, proven-vs-assumed, pilot readiness, todo-verify, and the pages
