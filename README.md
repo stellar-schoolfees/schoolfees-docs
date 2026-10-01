@@ -19,6 +19,7 @@ one.
 |---|---|
 | [Introduction](src/introduction.md) | What the project is, in plain language |
 | [Quickstart](src/quickstart.md) | How to run the real checks yourself today |
+| [Product requirements](src/prd.md) | What the product is, from what the code does |
 | [Architecture](src/architecture.md) | The contract, point by point, from the real code |
 | [Known limitations](src/limitations.md) | What is not proven and not handled |
 | [Threat model](src/threat-model.md) | A STRIDE walk-through, with honest gaps |
@@ -27,6 +28,7 @@ one.
 | [Proven vs assumed](src/proven-vs-assumed.md) | Every claim with the test or command behind it — or the word "assumed" |
 | [Pilot readiness](src/pilot-readiness.md) | The honest checklist for the first testnet deployment |
 | [Todo: verify](src/todo-verify.md) | Everything still unverified, and what would verify it |
+| [Legal and privacy checklist](src/legal-compliance.md) | A checklist, not legal advice, including what the app really stores |
 | [FAQ](src/faq.md) | Short answers to common questions |
 
 ## Reusing this repository
@@ -62,6 +64,8 @@ mdbook serve --open
 │   ├── SUMMARY.md            # table of contents
 │   ├── introduction.md
 │   ├── quickstart.md
+│   ├── prd.md                # what the product is, from what the code does
+│   ├── legal-compliance.md   # a checklist, not legal advice
 │   ├── architecture.md
 │   ├── limitations.md
 │   ├── threat-model.md
@@ -75,6 +79,8 @@ mdbook serve --open
 │   ├── check-links.mjs       # link + SUMMARY checker (no dependencies)
 │   └── check-links.test.mjs  # its tests
 ├── docs/issue-drafts/        # drafts for contributors (never created on GitHub for you)
+├── docs/arsenal-gap-map.md   # Build Arsenal + Flowtick status, per repo
+├── docs/audits/              # report-only audits, 2026-10-01
 ├── AGENTS.md                 # rules for AI agents working in this repo
 ├── ROADMAP.md                # what is next, and what is deliberately not built
 └── TEMPLATE.md               # what to copy into a new project, and what to change
