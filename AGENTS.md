@@ -43,7 +43,14 @@ Do not invent extra "investor-style" documents (funding asks, hiring plans, comp
 - NEVER read, print, log, commit, or ask for secret keys, seed phrases or `.env` contents.
 - Do NOT deploy, push, change git remotes, create GitHub issues, install tools, run `sudo`, or pipe downloads into a shell. Write files and stop; the human runs anything else.
 - Do not add dependencies without saying why.
-- Small commits with clear messages. Do not rewrite history.
+
+## Commit rules
+
+- One logical change per commit. Never bundle unrelated changes.
+- Never create empty or filler commits.
+- Every commit must pass this repository's checks (the link checker and its tests locally; the mdBook build in CI).
+- Subject line: 100 characters or fewer, in the imperative mood.
+- Do not rewrite history.
 - Never add a "Generated with Codebuff" trailer or any co-author trailer to commit messages.
 
 ## Scope rules
