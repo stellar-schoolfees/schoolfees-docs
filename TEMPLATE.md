@@ -51,6 +51,14 @@ not have.
 - `scripts/check-errors.mjs` + `check-errors.test.mjs` — keeps `ERRORS.md` and
   the error enum in sync, no dependencies.
 - `docs/events.md`, `docs/decisions/`, `docs/design/`.
+- `docs/SECURITY.md` — auth per function, no custody, token trust, input
+  validation, TTL/archival risk, dependency review, out of scope.
+- `docs/TESTING.md` — the real test layers with counts, and what is **not**
+  tested.
+- `docs/DEPLOYMENT_CHECKLIST.md` — the release gate; first item is the pilot
+  agreement, and it records key holders and the wasm hash.
+- `docs/ARCHITECTURE.md` — a short module map and a pointer to the docs repo's
+  architecture page. Never a second copy of it.
 - `scripts/deploy-testnet.sh`, gated so an agent never runs it.
 
 **Docs repo**
@@ -61,6 +69,10 @@ not have.
   `pilots/README.md` until a real pilot exists.
 - Audit pages: `proven-vs-assumed.md`, `pilot-readiness.md`, `todo-verify.md`
   (templates of the three; see §1.5).
+- `src/prd.md` — one page, written from what the code does, never from
+  intention.
+- `src/legal-compliance.md` — a privacy/legal checklist marked *not legal
+  advice*, with every open question marked `TODO(legal review)`.
 - `scripts/check-links.mjs` + `check-links.test.mjs` — verifies every relative
   link and every `SUMMARY.md` entry, no dependencies.
 - `TEMPLATE.md` (this file), adapted.
@@ -75,6 +87,18 @@ not have.
 - `.env.example` with placeholder values; `.env` never committed.
 - `docs/contract-errors.md` — a vendored copy of the contract's error table so
   CI can check the mapping without checking out the other repo.
+- `docs/SECURITY.md` — wallet rules, network safety, validation, RPC failure
+  handling, duplicate submission, dependency review.
+- `docs/TESTING.md` — what is unit tested, what is not, and the release smoke
+  test.
+- `docs/DESIGN_GUIDELINES.md` and `docs/ACCESSIBILITY.md` — direction, tokens,
+  components, and the WCAG baseline with its honest gaps.
+- `docs/DEPLOYMENT_CHECKLIST.md` — build, console, env, banner, states, and the
+  hosting steps left to the human.
+- `docs/PRODUCTION_QUALITY.md` — titles, metadata, favicon, 404, source maps,
+  bundle, and what is deferred until a real domain exists.
+- `docs/RESOURCES.md` — every dependency with version, purpose, licence and
+  whether it ships, plus the real `npm audit` result.
 - `vitest.config.ts`, strict tsconfigs, `.oxlintrc.json` (or the scaffold's
   linter), `scripts/deploy-testnet.sh` gated on `PILOT_CONFIRMED=yes`.
 
@@ -169,3 +193,72 @@ that cancels superseded runs.
 
 Each repo keeps its own `ROADMAP.md` and `docs/issue-drafts/`, and the
 `AGENTS.md` files stay in step as the project learns.
+
+## 5. From the Build Arsenal
+
+How `schoolfees` was measured against the Build Arsenal and the Flowtick
+engineering playbook (2026-10-01), and what a new project should take from each.
+The full per-item audit for `schoolfees` is
+`docs/arsenal-gap-map.md` in this repository; it is **not** part of the book and
+is not in `SUMMARY.md`.
+
+### 5.1 Copy these files, then adapt them
+
+| Source | Copy to | Adapt |
+|---|---|---|
+| `01-core-project-docs/AGENTS_TEMPLATE.md` | all three repos | Keep the section set: Source of truth, Collaboration rules, Build rules, Verification. Add the project's own privacy line, safety rules and truthfulness rules. |
+| `01-core-project-docs/SECURITY_TEMPLATE.md` + `04-security-arsenal/SECURITY_CHECKLIST.md` + `CRYPTO_SECURITY.md` | `docs/SECURITY.md` in the contracts and app repos | Split by repo: the contract's auth/custody/token/TTL, the app's wallet/network/validation/RPC. Link the threat model, never duplicate it. |
+| `01-core-project-docs/TESTING_TEMPLATE.md` | `docs/TESTING.md` in all three | Add real counts and names, and a "what is NOT tested" table. The not-tested half is the valuable half. |
+| `01-core-project-docs/DEPLOYMENT_CHECKLIST_TEMPLATE.md` + `05-production-launch-arsenal/RELEASE_RUNBOOK.md` | `docs/DEPLOYMENT_CHECKLIST.md` in the code repos | Put the real gate first (a pilot agreement, or whatever the project's gate is), then artefact, keys, rollback, smoke test. |
+| `01-core-project-docs/DESIGN_GUIDELINES_TEMPLATE.md` + `03-design-system/*` | `docs/DESIGN_GUIDELINES.md` in the app repo | Trim to what the app actually uses; keep the "what to avoid" list and the known-deviations table. |
+| `03-design-system/ACCESSIBILITY.md` + Flowtick §3 | `docs/ACCESSIBILITY.md` in the app repo | State the WCAG target, mark what is built-in versus audited, and list what a human must check by eye. |
+| `01-core-project-docs/PRODUCTION_QUALITY_TEMPLATE.md` + `05-production-launch-arsenal/SEO_TEMPLATE.md` | `docs/PRODUCTION_QUALITY.md` in the app repo | Mark everything that needs a domain as **deferred**, and never invent a URL. |
+| `01-core-project-docs/RESOURCES_TEMPLATE.md` | `docs/RESOURCES.md` in the app repo | Read licences from the **installed** packages; record the real audit result and any package with no declared licence. |
+| `01-core-project-docs/PRD_TEMPLATE.md` | `src/prd.md` in the docs repo | Write it from what exists, with no invented numbers or users. |
+| `01-core-project-docs/LEGAL_COMPLIANCE_TEMPLATE.md` | `src/legal-compliance.md` in the docs repo | Mark it *not legal advice*, audit what the app really stores, and label every open question `TODO(legal review)`. |
+| `01-core-project-docs/ARCHITECTURE_TEMPLATE.md` | `docs/ARCHITECTURE.md` in the code repos | A module map plus a link to the one real architecture page. Never a second copy. |
+| Flowtick §1 (Git discipline) | each `CONTRIBUTING.md`, and the commit rules in each `AGENTS.md` | Explicit staging, a staged-diff read, a secret scan and conventional commits with a 72-character subject. |
+| Flowtick §6 (Scoping and process) | each `AGENTS.md` (Collaboration rules) | Lead with the result, call out wrong assumptions plainly, ask before high-stakes changes, report honestly what was and was not tested. |
+| `04-security-arsenal/THREAT_MODEL_TEMPLATE.md` | `src/threat-model.md` in the docs repo | Keep the STRIDE walk-through with genuine "not applicable, because…" entries. |
+
+### 5.2 Adapt per project profile
+
+The Build Arsenal's project profiles change what "done" means. For a new project
+pick exactly one primary profile and add the privacy profile of the domain.
+
+| Profile | What it adds on top of the core docs |
+|---|---|
+| **crypto** (risk: HIGH — applied here) | Wallet connection and chain detection, address/contract-id validation, **the network shown before signing**, rejected/cancelled signature handling, bounded RPC retries and timeouts, duplicate-transaction prevention, no key material in the client, a testnet/production separation that is enforced in code. |
+| **education-platform** (applied here for student data) | A student-data privacy rule stated verbatim in every `AGENTS.md`, an opaque-reference-only rule on-chain, a legal checklist page, and accessibility treated as a requirement rather than a nicety. Roles, progress and content permissions are **only** copied if the project really has them — `schoolfees` has none and says so. |
+| **ai-app**, **saas**, **ecommerce**, **marketplace**, **dashboard**, **landing-page**, **portfolio**, **mobile-app**, **enterprise** | Ignored for `schoolfees`. Take them only if the new project is genuinely that shape: an AI app needs `04-security-arsenal/AI_SECURITY.md`; a SaaS needs sessions, rate limits and backup restore; an ecommerce app needs payments, uploads and duplicate-prevention; an enterprise app needs the strictest of everything. |
+
+### 5.3 What to drop from Flowtick
+
+Flowtick was written from a React + Vite + `localStorage` todo app deployed on
+Vercel. These parts do not transfer to a testnet-only contract project, and are
+dropped **with a stated reason** rather than silently:
+
+| Flowtick item | Why it is dropped here |
+|---|---|
+| §2 "Persistence layer": guarded parse, versioned storage keys, `crypto.randomUUID()`, app-prefixed keys | The app persists nothing of its own. Where a project does persist, keep these rules verbatim. |
+| §2 "Empty states per filter" | There are no lists or filters. Keep the rule for the day one is added. |
+| §4 "Routing and metadata": hand-rolled `popstate` router, `AppLink`, per-view `usePageTitle` | There is no router. Rather than invent one, the project records "every view is a URL" as a **gap with a draft**. A new project that needs deep links should just use React Router / the framework's router. |
+| §4 "Host-side requirement": SPA rewrites, server 404 status codes | There are no client routes and nothing is deployed. It becomes required the moment routing exists. |
+| §5 "Deploy and QA" as written for Vercel/Netlify | Deployment is a human step behind a pilot gate; the *verification* half (curl the real routes, clear storage, mobile viewport, live smoke test) is kept and rewritten for a static bundle. |
+| §2 "Node/Python backend equivalent" (validated payloads, database keys, invalidation) | There is no backend or database. The on-chain equivalent is input validation, a monotonic id and a typed error on a missing record. |
+| Anything requiring a dependency: Motion/GSAP, component libraries, Playwright, analytics | The project forbids analytics, trackers and third-party scripts, and adds dependencies only with a stated reason. Browser automation stays a *draft*, not an assumption. |
+| Flowtick's own examples, wording and figures | Never copied. Only the principle is reused, restated for a Soroban contract, a static testnet app and an mdBook. |
+
+### 5.4 The parts worth keeping everywhere
+
+Regardless of stack, three things from the two sources carried most of the value
+here and should be copied into every project:
+
+1. **"What is NOT tested" as a first-class document.** A suite that states its
+gaps is more trustworthy than one that does not. Flowtick's "tested / not
+tested" completion report and the `proven-vs-assumed` table are the same idea.
+2. **A deferral discipline.** A missing domain, contact or legal answer is
+recorded as `TODO(verify)` / `TODO(legal review)` with an owner — never filled
+with an invented value.
+3. **A release gate with a named first item.** "Pilot agreement in hand" or its
+equivalent turns "ready" from a feeling into a checklist.

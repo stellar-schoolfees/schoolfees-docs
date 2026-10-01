@@ -50,9 +50,33 @@ SUMMARY entry has no page, and CI fails if the link checker fails.
 
 ## Commits
 
-- Small commits with clear messages.
-- No `Generated with ...` or co-author trailers.
-- Do not rewrite history, change remotes, or push on someone else's behalf.
+Before every commit:
+
+```bash
+git status --porcelain         # know exactly which files changed
+git diff --staged             # read what you are about to commit
+```
+
+- **Stage files by name** — `git add src/legal-compliance.md src/SUMMARY.md`,
+  never `git add -A`. Broad staging is how unrelated changes and secrets get into
+  history.
+- **Read the staged diff line by line.** If a hunk is not yours, leave it out.
+- **Secret scan.** No API keys, tokens, passwords, `.env` contents or key
+  material anywhere in a diff. A documentation repo has no reason to contain
+  any of it. If you see one, say so instead of committing it.
+- **Adding or renaming a page?** Update `src/SUMMARY.md` in the same commit, then
+  run `node scripts/check-links.mjs` — CI fails if a SUMMARY entry has no page or
+  a relative link does not resolve.
+- **No debug or generated output:** no `book/` (mdBook's build output), no
+  `/node_modules/`.
+- **Conventional commit message:** `type: imperative summary`, 72 characters or
+  fewer, where `type` is `feat`, `fix`, `docs`, `chore`, `test`, `refactor`,
+  `style` or `perf`. Good: `docs: add the privacy checklist page`. Bad:
+  `update stuff`, `wip`.
+- **One logical change per commit.** Never bundle unrelated changes, and never
+  create empty or filler commits.
+- No `Generated with ...` or co-author trailers. Do not rewrite history, change
+  remotes, or push on someone else's behalf.
 
 ## Ideas and unimplemented work
 
