@@ -35,12 +35,31 @@ What matters legally, in plain words:
    student or member ids are forbidden on-chain by rule in all three
    repositories, and the app accepts only a 64-character hex value with a
    plain-words warning next to the field. But:
+
+   > **Research note (2026-10-01), not verified by a qualified person.** Under
+   > the Nigeria Data Protection Act 2023, a child is anyone under 18 (consistent
+   > with the Child's Rights Act), and Section 31 requires parent or guardian
+   > consent with age and consent verification mechanisms. One source treats
+   > children's data as warranting the care given to sensitive data, and Section
+   > 31(5) deems a child under 13 incapable of consenting — which commentators
+   > flag as inconsistent with the under-18 definition. Sources:
+   > [cert.gov.ng](https://cert.gov.ng/ngcert/resources/Nigeria_Data_Protection_Act_2023.pdf),
+   > [FIJ](https://fij.ng/article/how-nigerias-data-protection-law-created-regulator-then-weakened-it/),
+   > [Cookie-Script](https://cookie-script.com/privacy-laws/nigeria-data-protection-act-2023).
 3. **`TODO(legal review)` — a hash is not automatically "not personal data".**
    Under many data-protection regimes, a value that can be linked back to a
    person by someone who holds the mapping (here: the school, which holds the
    reference → student mapping) is still personal data, or pseudonymous personal
    data. Whether hashing a student identifier is enough must be answered by
    someone qualified, not assumed by this project.
+
+   > **Research note (2026-10-01), not verified by a qualified person.** NDPA
+   > Section 65 defines personal data to include identification numbers and
+   > online identifiers, and defines pseudonymisation as processing where data
+   > cannot be attributed to a person without separately kept additional
+   > information. The school holds that additional information, so the on-chain
+   > reference may fall under the school's pseudonymised processing. Source:
+   > [LawGlobalHub — Section 65](https://www.lawglobalhub.com/section-65-nigeria-data-protection-act-2023/).
 4. **`TODO(legal review)` — a hash of an id can be brute-forced.** If the school
    hashes a short, guessable internal id with a plain SHA-256 and no secret, the
    published hash can sometimes be reversed by guessing. The project does not
@@ -85,6 +104,23 @@ local-icon module set, which would remove the icon requests entirely; that is
 tracked as a decision in the gap map and as app
 [draft 15](https://github.com/stellar-schoolfees/schoolfees-app/blob/main/docs/issue-drafts/15-correct-the-outbound-request-claim.md).
 
+> **Research note (2026-10-01), not verified by a qualified person.** The
+> General Application and Implementation Directive (GAID) 2025 lists an article
+> on consent to cookies and other tracking tools, and a duty to provide privacy
+> and cookie notices on the homepage. Secondary sources say necessary cookies
+> that process no sensitive or financial data need no consent. Whether the
+> wallet kit's five `localStorage` keys count as necessary, and whether this
+> project is a controller at all, are open questions. Sources:
+> [DPO-India](https://dpo-india.com/Resources/privacy_laws_in_africa_nations/Nigeria(NDP-Act)(GAID)2025.pdf),
+> [Manfield Solicitors](https://manifieldsolicitors.com/nigeria-data-protection-act-general-application-and-implementation-directive-gaid-2025-what-every-business-needs-to-know-about-nigerias-data-protection-directive/).
+
+> **Maintainer inference (2026-10-01), not legal advice.** Opening the wallet
+> picker contacts outside icon hosts (`https://stellar.creit.tech/wallet-icons/…`,
+> plus `https://scopuly.com` and `https://uni.onekey-asset.com`), which reveals
+> the user's IP address — an online identifier under the NDPA definition. This
+> supports moving to local icons (app step 4), which would remove the icon
+> requests entirely.
+
 ## 3. Where student identity is expected to live
 
 Stated once, plainly, because everything else depends on it:
@@ -118,11 +154,21 @@ project cannot interpret them. **No conclusion is drawn here.**
   Commission issues guidance and registration requirements that have changed
   over time, including anything specific to children's data. Check the current
   version; do not rely on a summary, including this one.
+  > **Research note (2026-10-01), not verified by a qualified person.** The
+  > NDPC's General Application and Implementation Directive 2025 (GAID 2025),
+  > issued 20 March 2025, is reported effective 19 September 2025 and is
+  > reported to replace the 2019 regulation. Sources:
+  > [Mondaq](https://www.mondaq.com/nigeria/data-protection/1684204/unlocking-gaid-2025-answers-to-all-your-burning-questions),
+  > [Afriwise](https://www.afriwise.com/blog/key-updates-from-the-nigeria-data-protection-act---general-application-and-implementation-directive-gaid-2025).
 - **Federal Competition and Consumer Protection Act (FCCPA, Nigeria)** — touches
   how a service is described to consumers, including fee handling and anything
   that could read as a misleading claim. The app's rule "testnet only, no real
   money, no pilot has happened" is written with that in mind, but whether that is
   sufficient for a public pilot page is a legal question.
+  > **Research note (2026-10-01), not verified by a qualified person.** FCCPA
+  > Section 125 prohibits false, misleading or deceptive representations. Whether
+  > a free testnet pilot counts as trade or marketing is for a qualified person.
+  > Source: [LawGlobalHub — FCCPA 2018](https://www.lawglobalhub.com/federal-competition-and-consumer-protection-act-2018-nigeria/).
 - **Anything the real deployment later touches**: which country the payer is in,
   whether a school is publicly funded, and whether the host of a published site
   brings additional obligations.
@@ -139,6 +185,15 @@ none:
 - **No privacy policy, no terms of use, no cookie banner, no consent flow.** A
   policy has to describe a real data practice, a real controller and a real
   contact. This project has none of those yet, and must not invent any.
+  > **Research note (2026-10-01), not verified by a qualified person.** The
+  > GAID 2025 lists an article on consent to cookies and other tracking tools
+  > and a duty to provide privacy and cookie notices on the homepage. Secondary
+  > sources say necessary cookies that process no sensitive or financial data
+  > need no consent. Do NOT add a banner here. Whether the wallet kit's five
+  > `localStorage` keys count as necessary, and whether this project is a
+  > controller at all, are open questions — see section 2. Sources:
+  > [DPO-India](https://dpo-india.com/Resources/privacy_laws_in_africa_nations/Nigeria(NDP-Act)(GAID)2025.pdf),
+  > [Manfield Solicitors](https://manifieldsolicitors.com/nigeria-data-protection-act-general-application-and-implementation-directive-gaid-2025-what-every-business-needs-to-know-about-nigerias-data-protection-directive/).
 - **No privacy contact.** `TODO(legal review)` — if one is required, the
   maintainer supplies it. Nothing here fabricates an address, an email or a
   postal address.
@@ -153,6 +208,40 @@ none:
 - **No accessibility statement.** The app targets WCAG 2.2 AA
   ([the accessibility baseline](https://github.com/stellar-schoolfees/schoolfees-app/blob/main/docs/ACCESSIBILITY.md)),
   but no audit has been done, so there is nothing truthful to declare yet.
+
+## Data Privacy Impact Assessment (DPIA) — research note
+
+> **Research note (2026-10-01), not verified by a qualified person.** A
+> secondary summary reports that the GAID lists educational records and digital
+> financial services among cases requiring a data privacy impact assessment,
+> signed by a certified data protection officer and following a GAID schedule.
+> Whether a school pilot triggers one, and whose duty it is (school or
+> maintainer), is an open question.
+
+## Registration thresholds — research note
+
+> **Research note (2026-10-01), not verified by a qualified person.** A
+> secondary source reports volume thresholds of 200, 1,000 and 5,000 data
+> subjects for controllers of major importance. **These figures are unverified.**
+> Question to ask each pilot school: does it reach a threshold or fall under an
+> exemption. Source:
+> [Regulations.AI](https://regulations.ai/regulations/RAI-NG-NA-GAIGNXX-2025).
+
+## EU guidance — research note (NOT Nigerian law)
+
+> **Research note (2026-10-01), not verified by a qualified person. NOT Nigerian
+> law — persuasive only.** The EDPB's Guidelines 02/2025 on blockchain (final
+> version 2.0, adopted 7 July 2026) say hashed personal data is still personal
+> data, recommend salted or keyed hashes with the original kept off-chain, advise
+> against registering clear, encrypted or hashed personal data on a chain, and
+> treat keeping data off-chain so that erasing it makes the on-chain value
+> unlinkable as the practical answer to erasure requests. Sources:
+> [Bird & Bird](https://www.twobirds.com/en/insights/2026/netherlands/edpb-adopts-final-guidelines-on-blockchain-and-personal-data-a-practical-guide-for-organisations),
+> [EDPB](https://www.edpb.europa.eu/documents/guideline/guidelines-02-2025-on-processing-of-personal-data-through-blockchain_en).
+
+> **What was NOT found (2026-10-01).** No NDPC guidance specific to blockchains
+> or public ledgers, and none specific to schools, was found in this research.
+> This is a record of absence, not a claim that none exists.
 
 ## 6. Questions for a qualified person
 
@@ -169,5 +258,74 @@ none:
 6. Is publishing the pilot site publicly (rather than unlisted) acceptable before
    any of the above is settled?
 
+> **Maintainer's design idea (not a decision, not legal advice).** The school
+> could generate a random 32-byte reference that is not derived from any
+> student data, and keep the reference → student mapping off-chain. This avoids
+> the brute-forcing risk noted in section 1 item 4. Whether hashing or random
+> generation is better, and whether this is sound, is for a qualified person.
+
+7. **`TODO(legal review)` — Does a school pilot trigger a DPIA?** A secondary
+   summary reports educational records and digital financial services among the
+   cases requiring a data privacy impact assessment, signed by a certified data
+   protection officer. Whose duty is it — the school or the maintainer?
+8. **`TODO(legal review)` — Does the school reach a controller registration
+   threshold?** Secondary sources report volume thresholds of 200, 1,000 and
+   5,000 data subjects (unverified). Does the school fall under a threshold or
+   an exemption, and what is its controller status?
+9. **`TODO(legal review)` — Who obtains and verifies parental consent?** Under
+   the NDPA 2023, a child is anyone under 18 and Section 31 requires parent or
+   guardian consent with verification mechanisms; Section 31(5) deems a child
+   under 13 incapable of consenting. Who obtains parental consent for a school
+   fee record, and who verifies it?
+10. **`TODO(legal review)` — Do the wallet kit's five `localStorage` keys and
+    the (now local) icon setup require a storage/cookie notice, or are they
+    necessary with no consent required?**
+11. **`TODO(legal review)` — Should hashed or random references be on-chain at
+    all?** The design option above is one idea; the broader question is whether
+    a 32-byte random reference (not derived from student data, mapping kept
+    off-chain) is the right shape, and whether a school or the maintainer is
+    the controller for the on-chain record.
+
 Until those are answered, the project's position is: **testnet only, no real
 money, no pilot, nothing deployed**, and no legal commitment of any kind.
+
+## Research log
+
+- **Date:** 2026-10-01
+- **What was searched:** Nigeria Data Protection Act 2023 (child consent,
+  definitions, registration thresholds); NDPC General Application and
+  Implementation Directive 2025 (GAID 2025); cookie and storage consent under
+  the NDPA; FCCPA Section 125; EDPB blockchain and personal data guidance;
+  data privacy impact assessment thresholds in Nigerian law.
+- **Method:** independent web search of publicly available secondary summaries
+  and one secondary copy of the GAID text, using the URLs below. The primary
+  Nigerian legal texts were not read in full.
+- **Sources:**
+  - cert.gov.ng — Nigeria Data Protection Act 2023:
+    https://cert.gov.ng/ngcert/resources/Nigeria_Data_Protection_Act_2023.pdf
+  - FIJ — "How Nigeria's Data Protection Law Created Regulator, Then Weakened
+    It": https://fij.ng/article/how-nigerias-data-protection-law-created-regulator-then-weakened-it/
+  - Cookie-Script — Nigeria Data Protection Act 2023:
+    https://cookie-script.com/privacy-laws/nigeria-data-protection-act-2023
+  - LawGlobalHub — Section 65 NDPA 2023:
+    https://www.lawglobalhub.com/section-65-nigeria-data-protection-act-2023/
+  - Mondaq — "Unlocking GAID 2025":
+    https://www.mondaq.com/nigeria/data-protection/1684204/unlocking-gaid-2025-answers-to-all-your-burning-questions
+  - Afriwise — Key Updates from the NDPA / GAID 2025:
+    https://www.afriwise.com/blog/key-updates-from-the-nigeria-data-protection-act---general-application-and-implementation-directive-gaid-2025
+  - DPO-India — Nigeria (NDP-Act)(GAID)2025:
+    https://dpo-india.com/Resources/privacy_laws_in_africa_nations/Nigeria(NDP-Act)(GAID)2025.pdf
+  - Manfield Solicitors — GAID 2025 guidance:
+    https://manifieldsolicitors.com/nigeria-data-protection-act-general-application-and-implementation-directive-gaid-2025-what-every-business-needs-to-know-about-nigerias-data-protection-directive/
+  - Regulations.AI — GAID 2025 registration thresholds:
+    https://regulations.ai/regulations/RAI-NG-NA-GAIGNXX-2025
+  - Bird & Bird — EDPB final guidelines on blockchain and personal data:
+    https://www.twobirds.com/en/insights/2026/netherlands/edpb-adopts-final-guidelines-on-blockchain-and-personal-data-a-practical-guide-for-organisations
+  - EDPB — Guidelines 02/2025 on blockchain:
+    https://www.edpb.europa.eu/documents/guideline/guidelines-02-2025-on-processing-of-personal-data-through-blockchain_en
+  - LawGlobalHub — FCCPA 2018:
+    https://www.lawglobalhub.com/federal-competition-and-consumer-protection-act-2018-nigeria/
+- **Limits:** these are secondary summaries, not primary Nigerian legal texts.
+  One secondary copy of the GAID text was read but not treated as authoritative.
+  Nothing on this page is legal advice, and no source was verified by a qualified
+  person. Every conclusion remains `TODO(legal review)`.

@@ -87,6 +87,18 @@ the maintainer, and it is here so that "ready" means something specific.
       design, and that is stated in [known limitations](limitations.md).
 - [ ] **Not done.** Confirm the people in the pilot understand, in their own
       words, which parts of the record are public.
+- [ ] **Not done.** DPIA decision made: whether a school pilot triggers a data
+      privacy impact assessment under the NDPA 2023 and GAID 2025, and whose duty
+      it is.
+- [ ] **Not done.** The school's controller status and data-protection
+      registration thresholds checked against the NDPA 2023 and GAID 2025.
+- [ ] **Not done.** Parental consent route agreed: who obtains and verifies
+      parent or guardian consent for a student fee record, under NDPA Section 31.
+- [ ] **Not done.** Reference-derivation decision made with qualified advice:
+      whether to use a hash or a random 32-byte reference, and to keep the
+      mapping off-chain.
+- [ ] **Not done.** Legal review of `legal-compliance.md` completed, including
+      all `TODO(legal review)` and `TODO(verify)` items in that file.
 
 ## 7. Walking people through it
 
