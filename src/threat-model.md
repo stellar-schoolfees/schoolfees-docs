@@ -107,9 +107,11 @@ covered only as a named gap.
   2. **Archival.** A fee nobody touches can archive after roughly
      `due_at + 30 days`, and v0 has no restore user interface. The TTL policy
      (top up toward the deadline plus a 30-day margin, 7-day floor) reduces the
-     risk; every read and write re-extends the entries it touches
-     (`src/storage.rs` in `schoolfees-contracts`). It does not eliminate the
-     need for manual recovery of a long-idle record.
+     risk; every transaction re-extends the entries it touches
+     (`src/storage.rs` in `schoolfees-contracts`). The app's read screens are
+     simulations, though, and a simulation's extension is never persisted —
+     browsing the app does not keep a record alive. This does not eliminate
+     the need for manual recovery of a long-idle record.
   3. **A hostile or broken token.** If the school picks a token whose contract
      fails or is malicious, `pay` and `refund` fail. The fee's own storage is
      unaffected, but the fee cannot be settled.

@@ -75,9 +75,10 @@ These are things a reader might assume the contract checks, and it does not:
   by mistake cannot be reused by that school.
 - **Records can archive.** Each record is topped up toward its due date plus a
   30-day settlement margin, with a 7-day floor (`src/storage.rs` in
-  `schoolfees-contracts`). A fee nobody touches can archive after roughly
-  `due_at + 30 days`. v0 ships no restore user interface, so restoring an
-  archived entry is a manual step today.
+  `schoolfees-contracts`). A fee nobody writes to can archive after roughly
+  `due_at + 30 days`: reads submitted as transactions extend a record, but the
+  app's read screens only simulate, so browsing the app does not. v0 ships no
+  restore user interface, so restoring an archived entry is a manual step today.
 - **Spam is possible.** Because anyone can create fees, anyone can fill the
   contract with meaningless records. There is no rate limit, no fee, and no
   blocklist.
