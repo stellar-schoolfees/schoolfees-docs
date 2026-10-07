@@ -39,7 +39,7 @@ tries it with real money.
 |---|---|---|
 | **School or tutorial centre staff** (bursar, administrator) | record a fee that a family can verify; take part-payments; refund a payment; close a settled record | connect a wallet, create a fee against a reference only they understand, refund and close (`CreateFeePage`, `SchoolActionsPage`) |
 | **A payer** (parent or guardian, or anyone paying on their behalf) | pay part or all of a fee and keep the receipt | look up the fee, see everything recorded, pay in instalments, get the transaction hash (`LookupFeePage`, `PayPage`) |
-| **Anyone else** | check that a record says what they were told it says | read a fee and its derived status with no account and no wallet (`get_fee`, `status`) |
+| **Anyone else** | check that a record says what they were told it says | read a fee through public contract methods (`get_fee`, `status`); the current app lookup requires a wallet |
 
 The users are not developers. Every user-facing word in the app is written for a
 phone, in plain language, and the one technical field (the reference) carries a
@@ -65,7 +65,7 @@ Nothing below is deployed.
    stored.
 7. Four lifecycle events, eleven error codes with reviewed wording, TTL extension
    from each fee's real deadline, no loops and no lists.
-8. 34 tests, every error path exercised, CI green.
+8. 34 Rust tests passed locally on October 7, every error path exercised; remote CI outcome not verified.
 
 **The app** (`schoolfees-app`, Vite + React + TypeScript, static):
 
@@ -78,9 +78,11 @@ Nothing below is deployed.
     is built; a transaction hash and explorer link after every action.
 14. Mobile-first, labelled, keyboard-reachable markup; no analytics, no trackers,
     no backend.
-15. 154 tests — 85 over the pure logic and 69 render tests with an automated
-    accessibility check — and CI running lint, type-check, tests and the
-    production build.
+15. 168 tests across 26 files, with pure-logic and accessible render coverage,
+    passed locally on October 7, together with lint, strict type checking and
+    production build. CI is configured for these checks; the successful prior
+    published HEAD does not validate this changed worktree. See
+    [Proven vs assumed](proven-vs-assumed.md) for evidence and limitations.
 
 **The documentation** (this book): architecture, limitations, threat model,
 pilot playbook, proven-vs-assumed, pilot readiness, todo-verify, and the pages
@@ -120,8 +122,9 @@ relevant `ROADMAP.md`.
       automatically (`scripts/check-errors.mjs`, `contractErrors.test.ts`).
 - [x] The app validates every input, refuses any non-testnet network, and shows
       the transaction hash after every action.
-- [x] Lint, strict type-check, unit tests and the production build pass in CI on
-      all three repositories.
+- [ ] Verify remote CI on the exact published revisions. Local contract and app checks
+      passed; exact app evidence belongs in [Proven vs assumed](proven-vs-assumed.md).
+      The book build is configured in CI and was not run locally.
 - [x] The book states what is proven, what is assumed, and what is not
       implemented — and does not soften the pilot or production boundaries.
 - [x] Nothing unbuilt is described as built; no address, hash, tester, school or

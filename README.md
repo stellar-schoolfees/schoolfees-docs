@@ -33,6 +33,12 @@ one.
 
 ## Reusing this repository
 
+The [October submission packet](docs/submission/README.md) preserves the
+workspace's validation evidence, application descriptions and contributor issue
+drafts. It records local checks and synthetic browser fixtures, not deployment
+or acceptance. [Workspace tools](docs/submission/workspace-tools.zip) can be
+extracted into the original multi-project workspace to reproduce its checks.
+
 Starting another Stellar project from this one? [TEMPLATE.md](TEMPLATE.md) lists
 exactly what to copy, what to change per project, and what not to copy. It is a
 note for a human or an agent starting fresh — it is not applied to any other

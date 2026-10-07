@@ -1,0 +1,167 @@
+{
+  "syntheticOnly": true,
+  "results": [
+    {
+      "project": "schoolfees",
+      "screen": "ConnectPage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "schoolfees-ConnectPage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "CreateFeePage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "schoolfees-CreateFeePage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "LookupFeePage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "schoolfees-LookupFeePage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "PayPage",
+      "width": 390,
+      "viewport": 390,
+      "document": 390,
+      "screenshot": "schoolfees-PayPage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "SchoolActionsPage",
+      "width": 390,
+      "viewport": 390,
+      "document": 390,
+      "screenshot": "schoolfees-SchoolActionsPage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "ConnectPage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "schoolfees-ConnectPage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "CreateFeePage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "schoolfees-CreateFeePage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "LookupFeePage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "schoolfees-LookupFeePage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "PayPage",
+      "width": 320,
+      "viewport": 320,
+      "document": 320,
+      "screenshot": "schoolfees-PayPage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "schoolfees",
+      "screen": "SchoolActionsPage",
+      "width": 320,
+      "viewport": 320,
+      "document": 320,
+      "screenshot": "schoolfees-SchoolActionsPage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "HomePage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "eventbadges-HomePage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "OrganizerPage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "eventbadges-OrganizerPage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "AttendeePage",
+      "width": 390,
+      "viewport": 390,
+      "document": 375,
+      "screenshot": "eventbadges-AttendeePage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "VerifyPage",
+      "width": 390,
+      "viewport": 390,
+      "document": 390,
+      "screenshot": "eventbadges-VerifyPage-390.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "HomePage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "eventbadges-HomePage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "OrganizerPage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "eventbadges-OrganizerPage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "AttendeePage",
+      "width": 320,
+      "viewport": 320,
+      "document": 305,
+      "screenshot": "eventbadges-AttendeePage-320.png",
+      "overflow": false
+    },
+    {
+      "project": "eventbadges",
+      "screen": "VerifyPage",
+      "width": 320,
+      "viewport": 320,
+      "document": 320,
+      "screenshot": "eventbadges-VerifyPage-320.png",
+      "overflow": false
+    }
+  ]
+}

@@ -20,8 +20,7 @@ no amount of local work can remove those items.
 
 | What is unverified | Where | How to verify | Blocked on deployment? |
 |---|---|---|---|
-| A contract error code that is **not** in `ERRORS.md` gets a generic message naming the code (`"Something went wrong (contract error code N). Please report this."`) instead of reviewed wording. The branch exists but has never run. | `schoolfees-app/src/lib/contractErrors.ts:143` | Trigger a real host failure on a deployed contract, or add a new code to `ERRORS.md` in `schoolfees-contracts`, re-copy `docs/contract-errors.md`, and confirm the message. Then decide whether to keep or replace the branch. | **Yes** — needs a deployed contract. |
-| The maintainer's Stellar CLI is **27.1.0**, while CI pins and uses **v28.1.0**; whether the two behave identically for `stellar contract build` is unproven. | `schoolfees-contracts/AGENTS.md` (Toolchain, "Stellar CLI" bullet) and `README.md` (Toolchain notes) | The maintainer upgrades the CLI to v28.1.0 (an agent must not install tools), then runs `stellar contract build` locally and compares the artifact and command behaviour with the `Build wasm` job in CI. | **No** — needs a local tool upgrade, not a deployment. |
+| A contract error code that is **not** in `ERRORS.md` gets a generic message naming the code (`"Something went wrong (contract error code N). Please report this."`) instead of reviewed wording. The fallback has local unit-test coverage; its appearance in a real RPC failure remains unverified. | `schoolfees-app/src/lib/contractErrors.ts:143` | Trigger a real host failure on a deployed contract, or add a new code to `ERRORS.md` in `schoolfees-contracts`, re-copy `docs/contract-errors.md`, and confirm the message. Then decide whether to keep or replace the branch. | **Yes** — needs a deployed contract. |
 
 ## Assumptions recorded in the app
 
@@ -34,7 +33,7 @@ Source: the "Assumed — never exercised" section of `schoolfees-app/README.md`
 | A wallet connects, reports testnet, and signs. | `schoolfees-app/src/lib/wallet.ts` | Connect a real wallet on testnet and sign one transaction. | **Yes** |
 | Transaction submission and polling, including the archived-record refusal. | `schoolfees-app/src/lib/contract.ts` | Same as the first row; the refusal needs an archived entry to simulate a restore. | **Yes** |
 | Host error strings are parsed as `Error(Contract, #N)`. | `schoolfees-app/src/lib/contractErrors.ts` (regex) | Submit a transaction that fails with a contract error and read the real RPC message. | **Yes** |
-| The `status()` return value decodes as a unit-variant enum. The app reads it defensively (string, single-element vec, or object) and shows `Unknown` for anything unrecognised, which is honest but untested. | `schoolfees-app/src/lib/scval.ts` | Call `status(fee_id)` against a deployed contract and compare with the return of `get_fee`. | **Yes** |
+| The `status()` return value decodes as a unit-variant enum. The app reads it defensively (string, single-element vec, or object) and shows `Unknown` for anything unrecognised, which has local decoding tests but remains unverified against a deployed contract. | `schoolfees-app/src/lib/scval.ts` | Call `status(fee_id)` against a deployed contract and compare with the return of `get_fee`. | **Yes** |
 | The pages are accessible: labels and landmarks are in the markup, and an automated axe-core check now runs over every rendered component and page (2026-10-01), but no screen-reader or keyboard audit has been done. | `schoolfees-app/README.md` (line 137) | The manual screen-reader and keyboard audit — draft `07-component-and-accessibility-tests.md`. | **No** |
 | Components and pages have render tests (2026-10-01, app commits `25958ab`/`ca27a2b`), but no browser runs in CI. A local dev-server smoke test was done once during development, with a placeholder contract id. | `schoolfees-app/README.md` (line 140), `.github/workflows/web.yml` | A CI browser job — draft `07-component-and-accessibility-tests.md`. | **No** |
 
@@ -44,13 +43,12 @@ Source: the "Assumed — never exercised" section of `schoolfees-app/README.md`
 |---|---|---|---|
 | `fee.paid_total` always equals the sum of per-payer `paid` records (and likewise for refunds). It holds by construction — `src/fee.rs::pay` and `::refund` write both in one call — but no aggregate or property-based test checks it under arbitrary sequences. | `schoolfees-docs/src/architecture.md` §7; draft `06-property-based-invariants.md` | Property-based tests over random call sequences, then a fuzz run. | **No** |
 | The test-code-size floor ("at least as large as implementation code") is counted by hand. | `schoolfees-docs/src/architecture.md` §7; `schoolfees-contracts/AGENTS.md` | Add the coverage gate — draft `08-coverage-gate.md`. | **No** |
-| The wasm that CI builds with CLI v28.1.0 is the same shape as the one this machine built with 27.1.0 (13,794 bytes). | `schoolfees-contracts` build output, not committed | See the CLI row above: compare after the local upgrade. | **No** |
 
 ## Assumptions recorded in the docs
 
 | What is unverified | Where | How to verify | Blocked on deployment? |
 |---|---|---|---|
-| `mdbook build` has never run on the maintainer's machine — mdBook is deliberately not installed. The book build is proven by CI only. | `.github/workflows/docs.yml`; `AGENTS.md` (Tooling) | Read the "Build the book" step in the Docs workflow, or install mdBook (a human step) and run `mdbook build`. | **No** |
+| `mdbook build` has never run on the maintainer's machine — mdBook is deliberately not installed. A workflow configures the book build; its remote execution has not been verified in this session. | `.github/workflows/docs.yml`; `AGENTS.md` (Tooling) | Inspect the successful "Build the book" step on the exact submitted commit; workflow presence alone is insufficient evidence. | **No** |
 | The file, function and test names cited across this book still exist in the two code repos. | `src/architecture.md`, `src/proven-vs-assumed.md` | Add the freshness check — draft `03-docs-freshness-check.md`. | **No** |
 | The error wording quoted in the [FAQ](faq.md) matches `ERRORS.md`. It was checked by hand at the handoff audit; only the app's copy is checked automatically. | `src/faq.md` | Extend the app-style comparison so the book's quotes are checked too, or quote by reference instead of by copy. | **No** |
 
