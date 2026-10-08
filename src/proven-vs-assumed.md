@@ -20,6 +20,12 @@ each one.
 
 ## The contract (`schoolfees-contracts`)
 
+The October 8 synthetic demonstration has verified upload, creation and
+initialization transactions, a matching local/deployed Wasm hash, and an
+`admin()` read matching the public demonstration account. See the
+[deployment evidence](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md).
+This does not establish payment/refund network flows or a real pilot.
+
 | Claim | Status | Evidence |
 |---|---|---|
 | The contract compiles for `wasm32v1-none` and builds a `.wasm` | Tested locally; configured in CI | `stellar contract build` in `.github/workflows/contract.yml` |

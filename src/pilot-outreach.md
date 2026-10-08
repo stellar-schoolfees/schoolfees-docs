@@ -18,9 +18,10 @@ else is actually ready.
 Any outreach message must state these plainly. If a note cannot include them,
 it should not be sent.
 
-- The contract has **never been deployed**, and the app has **never run against
-  a deployed contract or a real wallet**. Every chain-facing behaviour is listed
-  as unproven in [proven vs assumed](proven-vs-assumed.md).
+- The contract has a [verified synthetic testnet demonstration](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md);
+  the app has **never run against a deployed contract or a real wallet**.
+  Payment/refund business flows remain unproven on a live network; see
+  [proven vs assumed](proven-vs-assumed.md).
 - The contract is **not audited**, and the pilot runs alongside no security
   review ([known limitations](limitations.md)).
 - Everything happens on **Stellar testnet** with tokens that have no real

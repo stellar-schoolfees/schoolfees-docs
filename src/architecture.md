@@ -37,7 +37,7 @@ release profile that sets `overflow-checks = true`, `panic = "abort"` and
 
 | Where | What runs | Status |
 |---|---|---|
-| Stellar testnet | The `schoolfees` contract (`src/lib.rs`), its own persistent and instance storage | Implemented; **not deployed** |
+| Stellar testnet | The `schoolfees` contract (`src/lib.rs`), its own persistent and instance storage | Implemented; [synthetic demonstration deployed](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md) |
 | Stellar testnet | The SEP-41 token contract the school chose | External, owned by the network/issuer |
 | The user's browser | The web app (`schoolfees-app`): wallet flow, error mapping | Implemented; never run against a deployed contract or a real wallet |
 | A keeper, indexer or backend service | — | **Does not exist**, and is out of scope |

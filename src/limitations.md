@@ -9,9 +9,11 @@ do. It is deliberately blunt. If a claim is not on this page or in the
 - **Testnet only. No mainnet deployment, ever, in this plan.** Testnet tokens
   have no value and the test network can be reset, which would erase every
   record.
-- **Nothing is deployed.** There is no contract address, on any network, to try
-  today. Deployment waits for a real school or tutorial centre to agree to try
-  the flow (see the [pilot playbook](pilot-playbook.md)).
+- **Only a synthetic testnet demonstration is deployed.** The
+  [verified contract record](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md)
+  establishes deployment and initialization. Payment/refund network smoke tests,
+  browser-wallet business flows and real pilots remain unverified. Real-user
+  testing still requires the [pilot playbook](pilot-playbook.md).
 - **No independent review or audit.** Nobody outside the project has reviewed
   the contract. Do not route real money through it.
 - The contract has **no upgrade path and no pause**. A deployed instance keeps

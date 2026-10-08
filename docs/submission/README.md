@@ -61,3 +61,15 @@ The earlier accepted-repository review sampled the visible list; it did not
 prove a universal acceptance pattern or guarantee approval. No published
 uniqueness restriction was identified. Quality, genuine contributor work and
 maintainer responsiveness still require evidence.
+
+## Verified synthetic demonstrations — October 8
+
+[Actual testnet addresses and explorer instructions](testnet-demonstrations.md)
+with [RPC verification evidence](testnet-deployments.json) supplement this historical
+pre-publication packet. No real pilot or browser-wallet business flow is claimed.
+
+## Remaining projects implemented ? October 8
+
+[Final local validation and limitations](remaining-projects-validation.md) cover
+Ajo, DuesTreasury and InvoicePay. Earlier scaffold/deferred descriptions in this
+packet are historical; consult the final repository READMEs for current scope.

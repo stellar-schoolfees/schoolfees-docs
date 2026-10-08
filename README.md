@@ -1,5 +1,9 @@
 # schoolfees — docs
 
+The contract now has a [verified synthetic testnet demonstration](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md).
+The browser app has not been deployed or tested with a real wallet. No real pilot
+or production readiness is claimed.
+
 The documentation for `schoolfees`, written as an [mdBook](https://rust-lang.github.io/mdBook/).
 `schoolfees` is a Stellar/Soroban pilot that records a school fee obligation
 against an opaque reference and lets payers settle it, without personal data

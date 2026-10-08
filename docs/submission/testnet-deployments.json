@@ -1,0 +1,100 @@
+{
+  "verifiedAt": "2026-10-08T18:52:08.061Z",
+  "network": "testnet",
+  "networkInfo": {
+    "friendbotUrl": "https://friendbot.stellar.org/",
+    "passphrase": "Test SDF Network ; September 2015",
+    "protocolVersion": 29
+  },
+  "deployedOn": "2026-10-08",
+  "authorization": "synthetic demonstration, not a real pilot",
+  "deployer": "GBHVPV4S3JRAOPQYODNULNPBW57REIJ2SDNAHYHN6SXGOKJCS3XLPVZD",
+  "contracts": [
+    {
+      "project": "schoolfees",
+      "id": "CBRSL5YIUN3ANQVEJB4YWQAXBN6KMZR55OWBDZS7ZLHCRKLDOOYWAXLR",
+      "creation": "bacbfdb35ec09b3500d9c094232c0351ac83c75de7037535071c5722041f03cd",
+      "upload": "718152bb7629d1ac9a004531ef6c36e441ba3ef667a5888161100c879a686d53",
+      "initialization": "d7d64dbf32af381ed08cfc0b62d387e35842ec34374d39c1b4ee02cfdd1138e0",
+      "hash": "016df1942fa7f02a9a2402bc0854d75c0393ba3ae6d39b2de858d040b996afbb",
+      "deployedHash": "016df1942fa7f02a9a2402bc0854d75c0393ba3ae6d39b2de858d040b996afbb",
+      "localHash": "016df1942fa7f02a9a2402bc0854d75c0393ba3ae6d39b2de858d040b996afbb",
+      "sourceCommit": "d664c3827c01144652ac59fe74659a2a2376171b",
+      "transactions": {
+        "creation": {
+          "hash": "bacbfdb35ec09b3500d9c094232c0351ac83c75de7037535071c5722041f03cd",
+          "status": "SUCCESS",
+          "ledger": 5078355,
+          "createdAt": "1791415362"
+        },
+        "upload": {
+          "hash": "718152bb7629d1ac9a004531ef6c36e441ba3ef667a5888161100c879a686d53",
+          "status": "SUCCESS",
+          "ledger": 5078353,
+          "createdAt": "1791415352"
+        },
+        "initialization": {
+          "hash": "d7d64dbf32af381ed08cfc0b62d387e35842ec34374d39c1b4ee02cfdd1138e0",
+          "status": "SUCCESS",
+          "ledger": 5078358,
+          "createdAt": "1791415377"
+        }
+      },
+      "explorer": "https://stellar.expert/explorer/testnet/contract/CBRSL5YIUN3ANQVEJB4YWQAXBN6KMZR55OWBDZS7ZLHCRKLDOOYWAXLR",
+      "lab": "https://lab.stellar.org/r/testnet/contract/CBRSL5YIUN3ANQVEJB4YWQAXBN6KMZR55OWBDZS7ZLHCRKLDOOYWAXLR",
+      "admin": "\"GBHVPV4S3JRAOPQYODNULNPBW57REIJ2SDNAHYHN6SXGOKJCS3XLPVZD\""
+    },
+    {
+      "project": "eventbadges",
+      "id": "CAHAB7ABUENVP7SZW37V3VRSAAASB6SV7FOBNWS2JYGUU7W6GHYY6JWR",
+      "creation": "9c769b49e9d26e4a3895dac51402f546b46f6ae86529e512ff3e831f7f67deb5",
+      "upload": "6f24bd81fd49b3e655a1cde8565dfc436978667c08b95a026de3a700de18fe49",
+      "hash": "671a29a1cc65df5b7de8952b276b765db3b5a2e048cfacd7d8ae707f4bfb62bf",
+      "deployedHash": "671a29a1cc65df5b7de8952b276b765db3b5a2e048cfacd7d8ae707f4bfb62bf",
+      "localHash": "671a29a1cc65df5b7de8952b276b765db3b5a2e048cfacd7d8ae707f4bfb62bf",
+      "sourceCommit": "36a2c97ae7db16fc1d82393dc52e846d15ac99cc",
+      "transactions": {
+        "creation": {
+          "hash": "9c769b49e9d26e4a3895dac51402f546b46f6ae86529e512ff3e831f7f67deb5",
+          "status": "SUCCESS",
+          "ledger": 5078364,
+          "createdAt": "1791415407"
+        },
+        "upload": {
+          "hash": "6f24bd81fd49b3e655a1cde8565dfc436978667c08b95a026de3a700de18fe49",
+          "status": "SUCCESS",
+          "ledger": 5078362,
+          "createdAt": "1791415397"
+        }
+      },
+      "explorer": "https://stellar.expert/explorer/testnet/contract/CAHAB7ABUENVP7SZW37V3VRSAAASB6SV7FOBNWS2JYGUU7W6GHYY6JWR",
+      "lab": "https://lab.stellar.org/r/testnet/contract/CAHAB7ABUENVP7SZW37V3VRSAAASB6SV7FOBNWS2JYGUU7W6GHYY6JWR"
+    },
+    {
+      "project": "invoicepay",
+      "id": "CCJ652VR7Y7H5KE5FUDT4FSTTN3FJECY44RJYHBW4J2BPSXVETJLTJKU",
+      "creation": "ab1b0d5718a824d718996c6d9497ac56d93770897769ff19435af37b3618eb2e",
+      "upload": "a3094be2490101787aabd570f41ee985e26f97f8db49551fdb05a0c51710f7cd",
+      "hash": "df77525063bda9e74fd183547895be59a3c7efd50b039cc8241d4313b316f709",
+      "deployedHash": "df77525063bda9e74fd183547895be59a3c7efd50b039cc8241d4313b316f709",
+      "localHash": "df77525063bda9e74fd183547895be59a3c7efd50b039cc8241d4313b316f709",
+      "sourceCommit": "5f2935324afc8368ff7ff65b5a31d0338d71937e",
+      "transactions": {
+        "creation": {
+          "hash": "ab1b0d5718a824d718996c6d9497ac56d93770897769ff19435af37b3618eb2e",
+          "status": "SUCCESS",
+          "ledger": 5078370,
+          "createdAt": "1791415437"
+        },
+        "upload": {
+          "hash": "a3094be2490101787aabd570f41ee985e26f97f8db49551fdb05a0c51710f7cd",
+          "status": "SUCCESS",
+          "ledger": 5078368,
+          "createdAt": "1791415427"
+        }
+      },
+      "explorer": "https://stellar.expert/explorer/testnet/contract/CCJ652VR7Y7H5KE5FUDT4FSTTN3FJECY44RJYHBW4J2BPSXVETJLTJKU",
+      "lab": "https://lab.stellar.org/r/testnet/contract/CCJ652VR7Y7H5KE5FUDT4FSTTN3FJECY44RJYHBW4J2BPSXVETJLTJKU"
+    }
+  ]
+}

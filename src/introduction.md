@@ -1,6 +1,6 @@
 # Introduction
 
-`schoolfees` is a small pilot that lets a school or tutorial centre record a fee
+`schoolfees` is a testnet prototype that lets a school or tutorial centre record a fee
 obligation on the Stellar test network and let families settle it, without
 putting anyone's personal details on a public ledger.
 
@@ -26,7 +26,7 @@ public ledger.
 
 | Repository | What it is | Status |
 |---|---|---|
-| [`schoolfees-contracts`](https://github.com/stellar-schoolfees/schoolfees-contracts) | The Soroban smart contract, in Rust | Implemented, testnet only, not deployed |
+| [`schoolfees-contracts`](https://github.com/stellar-schoolfees/schoolfees-contracts) | The Soroban smart contract, in Rust | Implemented; synthetic testnet demonstration deployed |
 | [`schoolfees-app`](https://github.com/stellar-schoolfees/schoolfees-app) | The small web app (wallet flow) | Implemented and unit tested; never run against a deployed contract or a real wallet |
 | [`schoolfees-docs`](https://github.com/stellar-schoolfees/schoolfees-docs) | This book | This is what you are reading |
 
@@ -46,9 +46,9 @@ public ledger.
 
 ## What this project is not
 
-- It is **not deployed**. There is no contract address to try yet, on purpose:
-  nothing is deployed until a real school or tutorial centre has agreed to try
-  the flow. See the [pilot playbook](pilot-playbook.md).
+- A **synthetic testnet demonstration** is deployed; see the [verified contract record](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md).
+  No real pilot agreement or browser-wallet flow has been completed. The real
+  pilot still requires the [pilot playbook](pilot-playbook.md).
 - It **never holds money**. Payments move directly from a payer's token balance
   to the school's token balance, executed by the token contract. The fee
   contract only records the obligation and its history.
