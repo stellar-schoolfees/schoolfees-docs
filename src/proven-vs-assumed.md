@@ -24,7 +24,7 @@ The October 8 synthetic demonstration has verified upload, creation and
 initialization transactions, a matching local/deployed Wasm hash, and an
 `admin()` read matching the public demonstration account. See the
 [deployment evidence](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md).
-This does not establish payment/refund network flows or a real pilot.
+Separate [synthetic CLI/RPC payment/refund checks](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/LIVE_TESTNET_SMOKE.md) now passed. Neither establishes browser-wallet integration or a real pilot.
 
 | Claim | Status | Evidence |
 |---|---|---|
@@ -70,9 +70,9 @@ measurement, not a performance benchmark or a resolved dependency audit.
 | Lint, strict type-check and the production build pass | Tested locally; configured in CI | `npm run lint`, `npm run typecheck`, `npm run build` |
 | The pages render and are reachable without a console error | **Tested locally only** | Isolated browser checks covered nine project pages at 320px and 390px (18 layouts), with synthetic mocked wallets and no external requests. These checks do not establish the complete app shell, screen-reader behavior, real wallets or network calls; no browser job runs in CI |
 | A wallet connects, reports its network and signs | **Assumed** | No real wallet has ever connected to this app; `src/lib/wallet.ts` is unproven |
-| Contract calls (build → simulate → assemble → submit → poll) work | **Assumed** | No contract is deployed; `src/lib/contract.ts` is unproven |
-| A transaction result is read back, including a fee id and a `status()` value | **Assumed** | The `status()` encoding of the unit-variant enum was never verified against a deployed contract; the app decodes defensively and shows `Unknown` for anything unrecognised |
-| A host error string (`Error(Contract, #N)`) is parsed correctly | **Assumed** | The regex in `src/lib/contractErrors.ts` matches the documented shape only; never seen on a real network |
+| Contract calls (build → simulate → assemble → submit → poll) work | **Assumed** | The contract is deployed and CLI/RPC smoke-tested; the browser app pipeline still awaits real-wallet validation |
+| The browser reads a transaction result, including a fee id and `status()` | **Assumed for the browser** | Live CLI tests verified fee id 1 and Paid/Closed statuses. The app decoder and wallet pipeline still need a browser end-to-end check; unknown representations show `Unknown` |
+| The browser parses a host error string (`Error(Contract, #N)`) | **Tested with mocks; browser integration pending** | Live CLI simulations produced the expected contract codes. The app regex has not yet been exercised through a real browser-wallet flow |
 | The app is accessible | **Tested locally only** | An automated axe-core check runs over every rendered component and page and fails on serious violations (`src/test/render.tsx`, added in `25958ab`/`ca27a2b`); the harness is itself tested against a deliberately broken label. Colour contrast is checked against the design tokens, not rendered styles, and no screen-reader or keyboard audit has been done — draft `07-component-and-accessibility-tests.md` |
 | The wallet picker uses eight explicitly configured Stellar wallet modules | Tested locally; source reviewed | `src/lib/wallet.ts` lists the modules; the broad default module import was removed |
 | Picker icons use local assets | Source reviewed | `public/wallet-icons/` and wallet module configuration replace remote icon URLs. This does not prove that wallet providers make no third-party requests |

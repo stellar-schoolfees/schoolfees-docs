@@ -73,3 +73,9 @@ pre-publication packet. No real pilot or browser-wallet business flow is claimed
 [Final local validation and limitations](remaining-projects-validation.md) cover
 Ajo, DuesTreasury and InvoicePay. Earlier scaffold/deferred descriptions in this
 packet are historical; consult the final repository READMEs for current scope.
+
+## Live synthetic contract checks
+
+[Three-project live testnet validation](live-testnet-validation.md) records
+15 successful CLI/RPC transactions and state/balance checks. Browser-wallet
+integration remains unverified; these are synthetic demonstrations, not pilots.

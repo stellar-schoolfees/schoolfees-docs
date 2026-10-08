@@ -11,8 +11,8 @@ do. It is deliberately blunt. If a claim is not on this page or in the
   record.
 - **Only a synthetic testnet demonstration is deployed.** The
   [verified contract record](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/TESTNET_DEMONSTRATION.md)
-  establishes deployment and initialization. Payment/refund network smoke tests,
-  browser-wallet business flows and real pilots remain unverified. Real-user
+  establishes deployment and initialization. [Synthetic CLI/RPC payment/refund
+  smoke tests](https://github.com/stellar-schoolfees/schoolfees-contracts/blob/main/docs/LIVE_TESTNET_SMOKE.md) have passed. Browser-wallet business flows and real pilots remain unverified. Real-user
   testing still requires the [pilot playbook](pilot-playbook.md).
 - **No independent review or audit.** Nobody outside the project has reviewed
   the contract. Do not route real money through it.
