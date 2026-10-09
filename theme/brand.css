@@ -1,0 +1,6 @@
+.project-brand { margin: 1.5rem 0; }
+.project-brand img { display: block; width: auto; max-width: 100%; height: 80px; object-fit: contain; object-position: left; }
+.project-brand .brand-dark { display: none; }
+.navy .project-brand .brand-light, .coal .project-brand .brand-light, .ayu .project-brand .brand-light { display: none; }
+.navy .project-brand .brand-dark, .coal .project-brand .brand-dark, .ayu .project-brand .brand-dark { display: block; }
+@media print { .project-brand .brand-dark { display: none !important; } .project-brand .brand-light { display: block !important; } }

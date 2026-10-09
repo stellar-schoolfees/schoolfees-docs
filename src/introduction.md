@@ -1,5 +1,11 @@
 # Introduction
 
+<div class="project-brand">
+  <img class="brand-light" src="brand/logo.svg" alt="SchoolFees" width="360">
+  <img class="brand-dark" src="brand/logo-dark.svg" alt="SchoolFees" width="360">
+</div>
+
+
 `schoolfees` is a testnet prototype that lets a school or tutorial centre record a fee
 obligation on the Stellar test network and let families settle it, without
 putting anyone's personal details on a public ledger.

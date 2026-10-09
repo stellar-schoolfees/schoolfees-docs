@@ -6,6 +6,7 @@ src = "src"
 description = "Documentation for schoolfees, a Stellar/Soroban pilot that records school fee obligations against opaque references. Testnet only."
 
 [output.html]
+additional-css = ["theme/brand.css"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/stellar-schoolfees/schoolfees-docs"

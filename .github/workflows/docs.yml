@@ -34,3 +34,6 @@ jobs:
 
       - name: Build the book
         run: mdbook build
+
+      - name: Verify brand assets in the built book
+        run: node scripts/check-brand.mjs --built
